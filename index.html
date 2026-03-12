@@ -1,553 +1,2953 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Al-Mustanir Education Center</title>
+  <meta name="description" content="Al-Mustanir Education Center - Online Quran, Arabic, English and Islamic education platform." />
+  <style>
+    :root{
+      --navy:#0f2238;
+      --navy-2:#173553;
+      --green:#157347;
+      --gold:#c9a54c;
+      --bg:#f4f7fb;
+      --card:#ffffff;
+      --text:#1f2937;
+      --muted:#64748b;
+      --line:#e5e7eb;
+      --shadow:0 10px 30px rgba(15,34,56,.08);
+      --radius:20px;
+      --max:1180px;
+    }
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
 
-<title>Al-Mustanir Education Center</title>
+    body{
+      font-family: Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.65;
+    }
 
-<style>
+    a{ text-decoration:none; color:inherit; }
+    img{ max-width:100%; display:block; }
 
-body{
-font-family: Arial;
-margin:0;
-background:#f4f6f8;
-}
+    .container{
+      width:min(var(--max), 92%);
+      margin:auto;
+    }
 
-header{
-background:#0f3d2e;
-color:white;
-padding:20px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-}
+    .topbar{
+      background:var(--navy);
+      color:#e5edf6;
+      padding:10px 0;
+      font-size:14px;
+    }
 
-.logo{
-display:flex;
-align-items:center;
-}
+    .topbar .container{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:15px;
+      flex-wrap:wrap;
+    }
 
-.logo img{
-width:70px;
-margin-right:10px;
-}
+    .lang-switch{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
 
-nav a{
-color:white;
-margin:0 10px;
-text-decoration:none;
-font-weight:bold;
-}
+    .lang-switch button{
+      border:none;
+      background:#203a57;
+      color:#fff;
+      padding:8px 12px;
+      border-radius:10px;
+      cursor:pointer;
+      font-size:13px;
+      font-weight:bold;
+    }
 
-.hero{
-background:#eaf3ef;
-padding:80px 20px;
-text-align:center;
-}
+    .lang-switch button.active{
+      background:var(--gold);
+      color:var(--navy);
+    }
 
-.hero h1{
-font-size:40px;
-color:#0f3d2e;
-}
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(15,34,56,.96);
+      backdrop-filter:blur(10px);
+      box-shadow:0 4px 20px rgba(0,0,0,.12);
+    }
 
-.hero p{
-font-size:18px;
-}
+    .navbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+      padding:16px 0;
+      flex-wrap:wrap;
+    }
 
-.btn{
-background:#0f6a3b;
-color:white;
-padding:12px 25px;
-display:inline-block;
-margin-top:20px;
-text-decoration:none;
-border-radius:5px;
-}
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
 
-.section{
-padding:60px 20px;
-max-width:1000px;
-margin:auto;
-}
+    .brand img{
+      width:64px;
+      height:64px;
+      object-fit:contain;
+      background:#fff;
+      border-radius:14px;
+      padding:4px;
+    }
 
-.section h2{
-text-align:center;
-color:#0f3d2e;
-margin-bottom:30px;
-}
+    .brand-text h1{
+      color:#fff;
+      font-size:24px;
+      line-height:1.15;
+      margin-bottom:3px;
+    }
 
-.courses{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
+    .brand-text p{
+      color:#d2dbe6;
+      font-size:13px;
+      max-width:500px;
+    }
 
-.course{
-background:white;
-padding:20px;
-border-radius:6px;
-box-shadow:0 0 10px rgba(0,0,0,0.1);
-}
+    nav{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
 
-.notice{
-background:#fff;
-padding:20px;
-border-left:5px solid #0f6a3b;
-margin-bottom:10px;
-}
+    nav a{
+      color:#f8fafc;
+      font-weight:600;
+      font-size:15px;
+    }
 
-footer{
-background:#0f3d2e;
-color:white;
-padding:30px;
-text-align:center;
-}
+    nav a:hover{
+      color:#f4cf77;
+    }
 
-</style>
+    .hero{
+      background:
+        linear-gradient(rgba(15,34,56,.82), rgba(15,34,56,.82)),
+        url('https://images.unsplash.com/photo-1519817650390-64a93db511aa?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+      color:#fff;
+      padding:90px 0 80px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:28px;
+      align-items:center;
+    }
+
+    .badge{
+      display:inline-block;
+      background:rgba(255,255,255,.1);
+      color:#f7d98d;
+      border:1px solid rgba(255,255,255,.15);
+      padding:9px 14px;
+      border-radius:999px;
+      margin-bottom:18px;
+      font-size:14px;
+      font-weight:700;
+    }
+
+    .hero h2{
+      font-size:52px;
+      line-height:1.15;
+      margin-bottom:16px;
+    }
+
+    .hero p{
+      font-size:18px;
+      color:#e6edf5;
+      max-width:760px;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:26px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 22px;
+      border-radius:12px;
+      font-weight:700;
+      transition:.2s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .btn-primary{
+      background:var(--gold);
+      color:var(--navy);
+    }
+
+    .btn-secondary{
+      background:#fff;
+      color:var(--navy);
+    }
+
+    .btn-outline{
+      border:1px solid rgba(255,255,255,.25);
+      color:#fff;
+      background:transparent;
+    }
+
+    .hero-card{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:24px;
+      padding:26px;
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(10px);
+    }
+
+    .hero-card h3{
+      color:#f7d98d;
+      font-size:24px;
+      margin-bottom:12px;
+    }
+
+    .hero-card ul{
+      padding-left:20px;
+      color:#eef4fb;
+    }
+
+    .hero-card li{
+      margin:10px 0;
+    }
+
+    section{
+      padding:80px 0;
+    }
+
+    .section-head{
+      text-align:center;
+      margin-bottom:36px;
+    }
+
+    .section-head span{
+      display:inline-block;
+      color:var(--gold);
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      font-size:13px;
+      font-weight:800;
+      margin-bottom:10px;
+    }
+
+    .section-head h3{
+      font-size:38px;
+      color:var(--navy);
+      margin-bottom:10px;
+    }
+
+    .section-head p{
+      max-width:760px;
+      margin:auto;
+      color:var(--muted);
+      font-size:17px;
+    }
+
+    .cards-2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+    }
+
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
+
+    .about-card p{
+      margin-bottom:14px;
+      color:#374151;
+      font-size:17px;
+    }
+
+    .feature-list{
+      display:grid;
+      gap:16px;
+    }
+
+    .feature-item{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:16px;
+      background:#f8fafc;
+    }
+
+    .feature-num{
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      background:#eaf0f7;
+      color:var(--navy);
+      display:grid;
+      place-items:center;
+      font-weight:800;
+      flex-shrink:0;
+    }
+
+    .program-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+    }
+
+    .program-card{
+      background:#fff;
+      border-radius:20px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      border:1px solid #e9edf2;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .program-top{
+      background:linear-gradient(135deg, var(--navy-2), var(--navy));
+      color:#fff;
+      padding:22px;
+    }
+
+    .program-top h4{
+      font-size:22px;
+      margin-bottom:8px;
+    }
+
+    .program-body{
+      padding:22px;
+      flex:1;
+    }
+
+    .program-body p{
+      color:#4b5563;
+      margin-bottom:14px;
+    }
+
+    .program-body ul{
+      padding-left:18px;
+      color:#374151;
+    }
+
+    .program-body li{
+      margin:8px 0;
+    }
+
+    .process-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+
+    .process-card{
+      background:#fff;
+      border-radius:18px;
+      padding:24px;
+      text-align:center;
+      box-shadow:var(--shadow);
+    }
+
+    .process-badge{
+      width:52px;
+      height:52px;
+      margin:0 auto 14px;
+      border-radius:50%;
+      background:var(--gold);
+      color:var(--navy);
+      display:grid;
+      place-items:center;
+      font-weight:800;
+      font-size:18px;
+    }
+
+    .notice-grid{
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      gap:24px;
+    }
+
+    .notice-box{
+      background:#fff;
+      border-radius:20px;
+      padding:26px;
+      box-shadow:var(--shadow);
+    }
+
+    .notice-box h4{
+      font-size:24px;
+      color:var(--navy);
+      margin-bottom:16px;
+    }
+
+    .notice-item{
+      border-left:4px solid var(--gold);
+      background:#fafbfd;
+      padding:14px 16px;
+      border-radius:10px;
+      margin-bottom:14px;
+    }
+
+    .notice-item strong{
+      display:block;
+      color:var(--navy);
+      margin-bottom:4px;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+      margin-top:18px;
+    }
+
+    .stat{
+      background:#f8fafc;
+      border:1px solid var(--line);
+      border-radius:14px;
+      text-align:center;
+      padding:18px;
+    }
+
+    .stat h5{
+      font-size:28px;
+      color:var(--navy);
+      margin-bottom:4px;
+    }
+
+    .admission{
+      background:#fff;
+      border-radius:24px;
+      padding:28px;
+      box-shadow:var(--shadow);
+      max-width:960px;
+      margin:auto;
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .field label{
+      display:block;
+      font-weight:700;
+      margin-bottom:7px;
+      color:#334155;
+      font-size:14px;
+    }
+
+    .field input,
+    .field select,
+    .field textarea{
+      width:100%;
+      padding:13px 14px;
+      border:1px solid #d6dde5;
+      border-radius:12px;
+      font-size:15px;
+      background:#fff;
+    }
+
+    .field textarea{
+      min-height:130px;
+      resize:vertical;
+    }
+
+    .full{
+      grid-column:1/-1;
+    }
+
+    .form-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+
+    .small-note{
+      margin-top:14px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .cta{
+      background:linear-gradient(135deg, var(--green), #12945a);
+      color:#fff;
+      border-radius:24px;
+      padding:34px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+      flex-wrap:wrap;
+      box-shadow:var(--shadow);
+    }
+
+    .cta h4{
+      font-size:30px;
+      margin-bottom:8px;
+    }
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+    }
+
+    .contact-card{
+      background:#fff;
+      border-radius:20px;
+      padding:26px;
+      box-shadow:var(--shadow);
+    }
+
+    .contact-card h4{
+      font-size:24px;
+      color:var(--navy);
+      margin-bottom:14px;
+    }
+
+    .contact-card p{
+      margin:10px 0;
+      color:#374151;
+    }
+
+    footer{
+      background:var(--navy);
+      color:#dbe6f1;
+      padding:28px 0;
+      margin-top:20px;
+    }
+
+    .footer-wrap{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    @media (max-width: 992px){
+      .hero-grid,
+      .cards-2,
+      .notice-grid,
+      .contact-grid{
+        grid-template-columns:1fr;
+      }
+
+      .program-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .process-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .hero h2{
+        font-size:40px;
+      }
+
+      .navbar{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+
+    @media (max-width: 640px){
+      .program-grid,
+      .process-grid,
+      .stats,
+      .form-grid{
+        grid-template-columns:1fr;
+      }
+
+      .brand img{
+        width:54px;
+        height:54px;
+      }
+
+      .brand-text h1{
+        font-size:20px;
+      }
+
+      .hero{
+        padding:72px 0 60px;
+      }
+
+      .hero h2{
+        font-size:31px;
+      }
+
+      .section-head h3{
+        font-size:30px;
+      }
+
+      .cta h4{
+        font-size:24px;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<header>
-
-<div class="logo">
-
-<img src="logo.png">
-
-<div>
-
-<h2>Al-Mustanir Education Center</h2>
-
-<small>কুরআন শিক্ষা এবং ইসলামী জ্ঞান অর্জনের পদযাত্রায় আপনার বিশ্বস্ত সঙ্গী।</small>
-
-</div>
-
-</div>
-
-<nav>
-
-<a href="#">Home</a>
-<a href="#courses">Courses</a>
-<a href="#about">About</a>
-<a href="#notice">Notice</a>
-<a href="#contact">Contact</a>
-
-</nav>
-
-</header>
-
-
-<section class="hero">
-
-<h1>Learn Quran & Islamic Knowledge Online</h1>
-
-<p>Join our Islamic online academy and start learning Quran, Arabic and Islamic studies.</p>
-
-<a class="btn" href="https://wa.me/8801614917650">Apply Now</a>
-
-</section>
-
-
-<section class="section" id="courses">
-
-<h2>Our Programs</h2>
-
-<div class="courses">
-
-<div class="course">
-
-<h3>Quran Reading</h3>
-
-<p>Learn Quran with proper Tajweed from experienced teachers.</p>
-
-</div>
-
-<div class="course">
-
-<h3>Quran Memorization (Hifz)</h3>
-
-<p>Structured memorization program for students of all ages.</p>
-
-</div>
-
-<div class="course">
-
-<h3>Kids Quran Program</h3>
-
-<p>Special Quran classes designed for children.</p>
-
-</div>
-
-<div class="course">
-
-<h3>Arabic Language</h3>
-
-<p>Learn Arabic language for understanding Quran and Islamic texts.</p>
-
-</div>
-
-<div class="course">
-
-<h3>Islamic Studies</h3>
-
-<p>Basic Islamic knowledge including Aqidah, Fiqh and Hadith.</p>
-
-</div>
-
-<div class="course">
-
-<h3>English Language</h3>
-
-<p>Improve your English communication skills.</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-<section class="section" id="about">
-
-<h2>About Us</h2>
-
-<p>
-
-Al-Mustanir Education Center is an online Islamic learning platform dedicated to providing authentic Quran education and Islamic knowledge.
-
-</p>
-
-<p>
-
-Our mission is to help students around the world learn Quran, Arabic and Islamic studies in a simple and professional way.
-
-</p>
-
-</section>
-
-
-<section class="section" id="notice">
-
-<h2>Notice Board</h2>
-
-<div class="notice">
-
-New Quran classes are starting soon. Contact us for admission.
-
-</div>
-
-<div class="notice">
-
-Free consultation available through WhatsApp.
-
-</div>
-
-</section>
-
-
-<section class="section" id="contact">
-
-<h2>Contact Us</h2>
-
-<p>
-
-WhatsApp: 8801614917650
-
-</p>
-
-<p>
-
-Email: minhazulislamnuman9@gmail.com
-
-</p>
-
-</section>
-
-
-<footer>
-
-© 2026 Al-Mustanir Education Center
-
-</footer>
-
-
+  <div class="topbar">
+    <div class="container">
+      <div data-i18n="topbarText">অনলাইন কুরআন, ভাষা ও ইসলামিক শিক্ষা প্ল্যাটফর্ম</div>
+      <div class="lang-switch">
+        <button class="active" onclick="setLang('bn')">বাংলা</button>
+        <button onclick="setLang('en')">English</button>
+        <button onclick="setLang('ar')">العربية</button>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <div class="container navbar">
+      <div class="brand">
+        <img src="logo.png" alt="Al-Mustanir Education Center Logo">
+        <div class="brand-text">
+          <h1>Al-Mustanir Education Center</h1>
+          <p data-i18n="tagline">কুরআন শিক্ষা এবং ইসলামী জ্ঞান অর্জনের পদযাত্রায় আপনার বিশ্বস্ত সঙ্গী।</p>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#home" data-i18n="navHome">Home</a>
+        <a href="#programs" data-i18n="navPrograms">Programs</a>
+        <a href="#about" data-i18n="navAbout">About</a>
+        <a href="#notice" data-i18n="navNotice">Notice</a>
+        <a href="#contact" data-i18n="navContact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <div class="badge" data-i18n="heroBadge">Professional • Islamic • Online</div>
+        <h2 data-i18n="heroTitle">জ্ঞানের আলোয় আলোকিত ভবিষ্যৎ</h2>
+        <p data-i18n="heroDesc">
+          Al-Mustanir Education Center-এ কুরআন শিক্ষা, কিডস কুরআন প্রোগ্রাম, হিফজ, আরবি ভাষা, ইসলামিক স্টাডিজ এবং ইংলিশ ল্যাঙ্গুয়েজ—সুন্দর, মার্জিত ও প্রফেশনালভাবে উপস্থাপন করা হবে।
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#admission" data-i18n="heroBtn1">এখনই ভর্তি হন</a>
+          <a class="btn btn-secondary" href="https://wa.me/8801614917650" target="_blank" data-i18n="heroBtn2">WhatsApp যোগাযোগ</a>
+          <a class="btn btn-outline" href="#programs" data-i18n="heroBtn3">Programs দেখুন</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h3 data-i18n="heroCardTitle">আমাদের মূল সেবাসমূহ</h3>
+        <ul>
+          <li data-i18n="heroList1">Quran Reading & Tajweed</li>
+          <li data-i18n="heroList2">Quran Memorization Program</li>
+          <li data-i18n="heroList3">Kids Quran Learning</li>
+          <li data-i18n="heroList4">Arabic Language Support</li>
+          <li data-i18n="heroList5">Islamic Studies & English Language</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <span data-i18n="aboutLabel">About Us</span>
+        <h3 data-i18n="aboutTitle">আমাদের সম্পর্কে</h3>
+        <p data-i18n="aboutIntro">
+          Al-Mustanir Education Center একটি অনলাইন ইসলামিক শিক্ষা প্ল্যাটফর্ম, যেখানে কুরআন, আরবি, ইসলামিক স্টাডিজ এবং প্রয়োজনীয় ভাষা শিক্ষা একসাথে সাজানো হয়েছে।
+        </p>
+      </div>
+
+      <div class="cards-2">
+        <div class="card about-card">
+          <p data-i18n="aboutP1">
+            আমাদের লক্ষ্য হলো এমন একটি বিশ্বাসযোগ্য প্ল্যাটফর্ম তৈরি করা, যেখানে একজন শিক্ষার্থী নিজে কুরআন শিখতে পারে, নিজের সন্তানকে কুরআন শেখাতে পারে, হিফজ প্রোগ্রামে যুক্ত হতে পারে, আরবি ও ইংরেজি শিখতে পারে এবং ইসলামিক জ্ঞানের মৌলিক ও উন্নত অংশে এগোতে পারে।
+          </p>
+          <p data-i18n="aboutP2">
+            আমরা Rahmah Institute ধরনের একটি সাজানো, মার্জিত ও structured educational model অনুসরণ করে তোমার প্রতিষ্ঠানের জন্য এই প্ল্যাটফর্ম দাঁড় করাচ্ছি।
+          </p>
+          <p data-i18n="aboutP3">
+            এই ওয়েবসাইট বাংলা, English এবং العربية—তিন ভাষায় ব্যবহারযোগ্যভাবে সাজানো হয়েছে।
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="feature-list">
+            <div class="feature-item">
+              <div class="feature-num">01</div>
+              <div>
+                <strong data-i18n="feature1Title">Qualified Teachers</strong>
+                <p data-i18n="feature1Text">অভিজ্ঞ, দায়িত্বশীল ও ইসলামিক পরিবেশসম্মত শিক্ষক দ্বারা পাঠদান।</p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-num">02</div>
+              <div>
+                <strong data-i18n="feature2Title">Flexible Online Classes</strong>
+                <p data-i18n="feature2Text">অনলাইন ভিত্তিক হওয়ায় দেশ-বিদেশ থেকে অংশগ্রহণের সুযোগ।</p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-num">03</div>
+              <div>
+                <strong data-i18n="feature3Title">Structured Programs</strong>
+                <p data-i18n="feature3Text">Quran, Hifz, Arabic, Islamic Studies ও Language Learning-এর সাজানো কাঠামো।</p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-num">04</div>
+              <div>
+                <strong data-i18n="feature4Title">Easy Admission</strong>
+                <p data-i18n="feature4Text">ফর্ম, WhatsApp ও সরাসরি যোগাযোগের সহজ ব্যবস্থা।</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="programs">
+    <div class="container">
+      <div class="section-head">
+        <span data-i18n="programLabel">Our Programs</span>
+        <h3 data-i18n="programTitle">Programs & Courses</h3>
+        <p data-i18n="programIntro">
+          Quran-focused online academy model অনুসারে সাজানো কিছু গুরুত্বপূর্ণ প্রোগ্রাম।
+        </p>
+      </div>
+
+      <div class="program-grid">
+        <div class="program-card">
+          <div class="program-top">
+            <h4 data-i18n="p1Title">Quran Reading</h4>
+            <p data-i18n="p1Sub">তাজবিদসহ শুদ্ধ কুরআন শিক্ষা</p>
+          </div>
+          <div class="program-body">
+            <p data-i18n="p1Desc">মৌলিক থেকে শুদ্ধ তিলাওয়াত পর্যন্ত গাইডেড কুরআন লার্নিং।</p>
+            <ul>
+              <li data-i18n="p1L1">Noorani Qaida ভিত্তিক শুরু</li>
+              <li data-i18n="p1L2">তাজবিদ গাইডেন্স</li>
+              <li data-i18n="p1L3">Beginner-friendly</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="program-card">
+          <div class="program-top">
+            <h4 data-i18n="p2Title">Quran Memorization</h4>
+            <p data-i18n="p2Sub">হিফজ প্রোগ্রাম</p>
+          </div>
+          <div class="program-body">
+            <p data-i18n="p2Desc">শিক্ষার্থীদের জন্য ধাপে ধাপে হিফজ ও revision-based পরিকল্পনা।</p>
+            <ul>
+              <li data-i18n="p2L1">Daily memorization target</li>
+              <li data-i18n="p2L2">Revision support</li>
+              <li data-i18n="p2L3">Kids & adults</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="program-card">
+          <div class="program-top">
+            <h4 data-i18n="p3Title">Kids Quran Program</h4>
+            <p data-i18n="p3Sub">সন্তানের জন্য কুরআন শেখার ব্যবস্থা</p>
+          </div>
+          <div class="program-body">
+            <p data-i18n="p3Desc">শিশুদের জন্য সহজ, ধৈর্যশীল ও ইসলামিক আদবসম্মত পাঠদান।</p>
+            <ul>
+              <li data-i18n="p3L1">Child-friendly teaching</li>
+              <li data-i18n="p3L2">Parent support</li>
+              <li data-i18n="p3L3">Basic Islamic manners</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="program-card">
+          <div class="program-top">
+            <h4 data-i18n="p4Title">Arabic Language</h4>
+            <p data-i18n="p4Sub">আরবি ভাষা শিক্ষা</p>
+          </div>
+          <div class="program-body">
+            <p data-i18n="p4Desc">কুরআন বুঝতে ও আরবি চর্চার জন্য structured language support।</p>
+            <ul>
+              <li data-i18n="p4L1">Basic to intermediate</li>
+              <li data-i18n="p4L2">Tutor support</li>
+              <li data-i18n="p4L3">Reading & understanding</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="program-card">
+          <div class="program-top">
+            <h4 data-i18n="p5Title">Islamic Studies</h4>
+            <p data-i18n="p5Sub">ইসলামিক স্টাডিজ</p>
+          </div>
+          <div class="program-body">
+            <p data-i18n="p5Desc">আকিদা, ফিকহ, হাদিস ও প্রয়োজনীয় ইসলামিক জ্ঞানের ভিত্তিমূলক পাঠ।</p>
+            <ul>
+              <li data-i18n="p5L1">Foundational learning</li>
+              <li data-i18n="p5L2">Teacher guidance</li>
+              <li data-i18n="p5L3">Academic support</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="program-card">
+          <div class="program-top">
+            <h4 data-i18n="p6Title">English Language</h4>
+            <p data-i18n="p6Sub">ইংলিশ ল্যাঙ্গুয়েজ</p>
+          </div>
+          <div class="program-body">
+            <p data-i18n="p6Desc">মৌলিক ইংরেজি, যোগাযোগ দক্ষতা ও সহজ language support।</p>
+            <ul>
+              <li data-i18n="p6L1">Basic communication</li>
+              <li data-i18n="p6L2">Speaking support</li>
+              <li data-i18n="p6L3">Learner-focused guidance</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <span data-i18n="processLabel">How It Works</span>
+        <h3 data-i18n="processTitle">কীভাবে শুরু করবেন</h3>
+        <p data-i18n="processIntro">একজন শিক্ষার্থী বা অভিভাবক কীভাবে সহজে শুরু করতে পারে তার সংক্ষিপ্ত ধাপ।</p>
+      </div>
+
+      <div class="process-grid">
+        <div class="process-card">
+          <div class="process-badge">1</div>
+          <h4 data-i18n="step1Title">Choose Program</h4>
+          <p data-i18n="step1Text">আপনার প্রয়োজন অনুযায়ী প্রোগ্রাম নির্বাচন করুন।</p>
+        </div>
+
+        <div class="process-card">
+          <div class="process-badge">2</div>
+          <h4 data-i18n="step2Title">Contact / Apply</h4>
+          <p data-i18n="step2Text">ফর্ম পূরণ করুন অথবা WhatsApp-এ যোগাযোগ করুন।</p>
+        </div>
+
+        <div class="process-card">
+          <div class="process-badge">3</div>
+          <h4 data-i18n="step3Title">Guidance</h4>
+          <p data-i18n="step3Text">শিক্ষার্থী অনুযায়ী সময়, কোর্স ও শিক্ষক গাইডলাইন দেওয়া হবে।</p>
+        </div>
+
+        <div class="process-card">
+          <div class="process-badge">4</div>
+          <h4 data-i18n="step4Title">Start Learning</h4>
+          <p data-i18n="step4Text">অনলাইন সিস্টেমে সুন্দরভাবে ক্লাস শুরু করুন।</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="notice">
+    <div class="container">
+      <div class="section-head">
+        <span data-i18n="noticeLabel">Notice Board</span>
+        <h3 data-i18n="noticeTitle">নোটিশ ও আপডেট</h3>
+        <p data-i18n="noticeIntro">প্রতিষ্ঠানের সাম্প্রতিক আপডেট, নতুন ব্যাচ ও ভর্তি তথ্য।</p>
+      </div>
+
+      <div class="notice-grid">
+        <div class="notice-box">
+          <h4 data-i18n="noticeBoxTitle">সাম্প্রতিক নোটিশ</h4>
+
+          <div class="notice-item">
+            <strong data-i18n="n1Title">নতুন ভর্তি চলমান</strong>
+            <span data-i18n="n1Text">Quran Reading, Hifz ও Kids Quran Program-এর জন্য যোগাযোগ করুন।</span>
+          </div>
+
+          <div class="notice-item">
+            <strong data-i18n="n2Title">Arabic ও Islamic Studies Support</strong>
+            <span data-i18n="n2Text">আরবি ও ইসলামিক স্টাডিজে আগ্রহীদের জন্য সাপোর্ট ব্যবস্থা রাখা হয়েছে।</span>
+          </div>
+
+          <div class="notice-item">
+            <strong data-i18n="n3Title">Multilingual Website</strong>
+            <span data-i18n="n3Text">বাংলা, English এবং العربية—তিন ভাষায় সাইট ব্যবহারের সুযোগ।</span>
+          </div>
+        </div>
+
+        <div class="notice-box">
+          <h4 data-i18n="highlightTitle">Platform Highlights</h4>
+          <p data-i18n="highlightText">একটি গুছানো, প্রফেশনাল ও ইসলামিক ব্যালেন্সড online education platform হিসেবে সাজানো হয়েছে।</p>
+
+          <div class="stats">
+            <div class="stat">
+              <h5>3</h5>
+              <p data-i18n="stat1">Languages</p>
+            </div>
+            <div class="stat">
+              <h5>6</h5>
+              <p data-i18n="stat2">Programs</p>
+            </div>
+            <div class="stat">
+              <h5>24/7</h5>
+              <p data-i18n="stat3">Contact Support</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="admission">
+    <div class="container">
+      <div class="section-head">
+        <span data-i18n="admissionLabel">Admission</span>
+        <h3 data-i18n="admissionTitle">অনলাইন আবেদন</h3>
+        <p data-i18n="admissionIntro">প্রথম ধাপে display-based admission form রাখা হয়েছে। পরে real submission system যোগ করা যাবে।</p>
+      </div>
+
+      <div class="admission">
+        <div class="form-grid">
+          <div class="field">
+            <label data-i18n="f1">নাম</label>
+            <input type="text" placeholder="আপনার নাম লিখুন">
+          </div>
+
+          <div class="field">
+            <label data-i18n="f2">মোবাইল / WhatsApp</label>
+            <input type="text" placeholder="8801XXXXXXXXX">
+          </div>
+
+          <div class="field">
+            <label data-i18n="f3">ইমেইল</label>
+            <input type="email" placeholder="আপনার ইমেইল">
+          </div>
+
+          <div class="field">
+            <label data-i18n="f4">প্রোগ্রাম</label>
+            <select>
+              <option>Quran Reading</option>
+              <option>Quran Memorization</option>
+              <option>Kids Quran Program</option>
+              <option>Arabic Language</option>
+              <option>Islamic Studies</option>
+              <option>English Language</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label data-i18n="f5">কার জন্য</label>
+            <select>
+              <option data-i18n="selfOpt">নিজের জন্য</option>
+              <option data-i18n="childOpt">সন্তানের জন্য</option>
+              <option data-i18n="otherOpt">অন্যান্য</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label data-i18n="f6">সুবিধাজনক সময়</label>
+            <input type="text" placeholder="সকাল / বিকাল / রাত">
+          </div>
+
+          <div class="field full">
+            <label data-i18n="f7">অতিরিক্ত তথ্য</label>
+            <textarea placeholder="আপনার প্রয়োজন সম্পর্কে লিখুন"></textarea>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <a class="btn btn-primary" href="https://wa.me/8801614917650" target="_blank" data-i18n="applyBtn">WhatsApp-এ আবেদন করুন</a>
+          <a class="btn btn-secondary" href="mailto:minhazulislamnuman9@gmail.com" data-i18n="emailBtn">ইমেইল করুন</a>
+        </div>
+
+        <div class="small-note" data-i18n="formNote">
+          নোট: চাইলে পরবর্তীতে এই ফর্ম real submission-enabled করা যাবে।
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="cta">
+        <div>
+          <h4 data-i18n="ctaTitle">আজই যোগাযোগ করুন</h4>
+          <p data-i18n="ctaText">কোর্স, ভর্তি বা গাইডেন্সের বিষয়ে দ্রুত সাপোর্ট পেতে WhatsApp-এ যোগাযোগ করুন।</p>
+        </div>
+        <div>
+          <a class="btn btn-secondary" href="https://wa.me/8801614917650" target="_blank" data-i18n="ctaBtn">WhatsApp Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-head">
+        <span data-i18n="contactLabel">Contact</span>
+        <h3 data-i18n="contactTitle">যোগাযোগ</h3>
+        <p data-i18n="contactIntro">প্রতিষ্ঠানের সাথে যুক্ত হতে বা বিস্তারিত জানতে নিচের তথ্য ব্যবহার করুন।</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h4 data-i18n="contactBox1">প্রতিষ্ঠানের তথ্য</h4>
+          <p><strong data-i18n="nameLabel">নাম:</strong> Al-Mustanir Education Center</p>
+          <p><strong data-i18n="waLabel">WhatsApp:</strong> <a href="https://wa.me/8801614917650" target="_blank">8801614917650</a></p>
+          <p><strong data-i18n="mailLabel">Email:</strong> <a href="mailto:minhazulislamnuman9@gmail.com">minhazulislamnuman9@gmail.com</a></p>
+          <p><strong data-i18n="langLabel">Languages:</strong> বাংলা, English, العربية</p>
+        </div>
+
+        <div class="contact-card">
+          <h4 data-i18n="contactBox2">অতিরিক্ত তথ্য</h4>
+          <p data-i18n="extra1">Online Islamic education platform</p>
+          <p data-i18n="extra2">Quran, Hifz, Arabic, Islamic Studies & English</p>
+          <p data-i18n="extra3">দেশ-বিদেশ থেকে অংশগ্রহণের সুযোগ</p>
+          <p data-i18n="extra4">Social links পরে যোগ করা যাবে</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-wrap">
+      <p>© 2026 Al-Mustanir Education Center. All Rights Reserved.</p>
+      <p><a href="mailto:minhazulislamnuman9@gmail.com" style="color:#dbe6f1;">minhazulislamnuman9@gmail.com</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const translations = {
+      bn: {
+        topbarText: "অনলাইন কুরআন, ভাষা ও ইসলামিক শিক্ষা প্ল্যাটফর্ম",
+        tagline: "কুরআন শিক্ষা এবং ইসলামী জ্ঞান অর্জনের পদযাত্রায় আপনার বিশ্বস্ত সঙ্গী।",
+        navHome: "Home",
+        navPrograms: "Programs",
+        navAbout: "About",
+        navNotice: "Notice",
+        navContact: "Contact",
+        heroBadge: "Professional • Islamic • Online",
+        heroTitle: "জ্ঞানের আলোয় আলোকিত ভবিষ্যৎ",
+        heroDesc: "Al-Mustanir Education Center-এ কুরআন শিক্ষা, কিডস কুরআন প্রোগ্রাম, হিফজ, আরবি ভাষা, ইসলামিক স্টাডিজ এবং ইংলিশ ল্যাঙ্গুয়েজ—সুন্দর, মার্জিত ও প্রফেশনালভাবে উপস্থাপন করা হবে।",
+        heroBtn1: "এখনই ভর্তি হন",
+        heroBtn2: "WhatsApp যোগাযোগ",
+        heroBtn3: "Programs দেখুন",
+        heroCardTitle: "আমাদের মূল সেবাসমূহ",
+        heroList1: "Quran Reading & Tajweed",
+        heroList2: "Quran Memorization Program",
+        heroList3: "Kids Quran Learning",
+        heroList4: "Arabic Language Support",
+        heroList5: "Islamic Studies & English Language",
+        aboutLabel: "About Us",
+        aboutTitle: "আমাদের সম্পর্কে",
+        aboutIntro: "Al-Mustanir Education Center একটি অনলাইন ইসলামিক শিক্ষা প্ল্যাটফর্ম, যেখানে কুরআন, আরবি, ইসলামিক স্টাডিজ এবং প্রয়োজনীয় ভাষা শিক্ষা একসাথে সাজানো হয়েছে।",
+        aboutP1: "আমাদের লক্ষ্য হলো এমন একটি বিশ্বাসযোগ্য প্ল্যাটফর্ম তৈরি করা, যেখানে একজন শিক্ষার্থী নিজে কুরআন শিখতে পারে, নিজের সন্তানকে কুরআন শেখাতে পারে, হিফজ প্রোগ্রামে যুক্ত হতে পারে, আরবি ও ইংরেজি শিখতে পারে এবং ইসলামিক জ্ঞানের মৌলিক ও উন্নত অংশে এগোতে পারে।",
+        aboutP2: "আমরা Rahmah Institute ধরনের একটি সাজানো, মার্জিত ও structured educational model অনুসরণ করে তোমার প্রতিষ্ঠানের জন্য এই প্ল্যাটফর্ম দাঁড় করাচ্ছি।",
+        aboutP3: "এই ওয়েবসাইট বাংলা, English এবং العربية—তিন ভাষায় ব্যবহারযোগ্যভাবে সাজানো হয়েছে।",
+        feature1Title: "Qualified Teachers",
+        feature1Text: "অভিজ্ঞ, দায়িত্বশীল ও ইসলামিক পরিবেশসম্মত শিক্ষক দ্বারা পাঠদান।",
+        feature2Title: "Flexible Online Classes",
+        feature2Text: "অনলাইন ভিত্তিক হওয়ায় দেশ-বিদেশ থেকে অংশগ্রহণের সুযোগ।",
+        feature3Title: "Structured Programs",
+        feature3Text: "Quran, Hifz, Arabic, Islamic Studies ও Language Learning-এর সাজানো কাঠামো।",
+        feature4Title: "Easy Admission",
+        feature4Text: "ফর্ম, WhatsApp ও সরাসরি যোগাযোগের সহজ ব্যবস্থা।",
+        programLabel: "Our Programs",
+        programTitle: "Programs & Courses",
+        programIntro: "Quran-focused online academy model অনুসারে সাজানো কিছু গুরুত্বপূর্ণ প্রোগ্রাম।",
+        p1Title: "Quran Reading",
+        p1Sub: "তাজবিদসহ শুদ্ধ কুরআন শিক্ষা",
+        p1Desc: "মৌলিক থেকে শুদ্ধ তিলাওয়াত পর্যন্ত গাইডেড কুরআন লার্নিং।",
+        p1L1: "Noorani Qaida ভিত্তিক শুরু",
+        p1L2: "তাজবিদ গাইডেন্স",
+        p1L3: "Beginner-friendly",
+        p2Title: "Quran Memorization",
+        p2Sub: "হিফজ প্রোগ্রাম",
+        p2Desc: "শিক্ষার্থীদের জন্য ধাপে ধাপে হিফজ ও revision-based পরিকল্পনা।",
+        p2L1: "Daily memorization target",
+        p2L2: "Revision support",
+        p2L3: "Kids & adults",
+        p3Title: "Kids Quran Program",
+        p3Sub: "সন্তানের জন্য কুরআন শেখার ব্যবস্থা",
+        p3Desc: "শিশুদের জন্য সহজ, ধৈর্যশীল ও ইসলামিক আদবসম্মত পাঠদান।",
+        p3L1: "Child-friendly teaching",
+        p3L2: "Parent support",
+        p3L3: "Basic Islamic manners",
+        p4Title: "Arabic Language",
+        p4Sub: "আরবি ভাষা শিক্ষা",
+        p4Desc: "কুরআন বুঝতে ও আরবি চর্চার জন্য structured language support।",
+        p4L1: "Basic to intermediate",
+        p4L2: "Tutor support",
+        p4L3: "Reading & understanding",
+        p5Title: "Islamic Studies",
+        p5Sub: "ইসলামিক স্টাডিজ",
+        p5Desc: "আকিদা, ফিকহ, হাদিস ও প্রয়োজনীয় ইসলামিক জ্ঞানের ভিত্তিমূলক পাঠ।",
+        p5L1: "Foundational learning",
+        p5L2: "Teacher guidance",
+        p5L3: "Academic support",
+        p6Title: "English Language",
+        p6Sub: "ইংলিশ ল্যাঙ্গুয়েজ",
+        p6Desc: "মৌলিক ইংরেজি, যোগাযোগ দক্ষতা ও সহজ language support।",
+        p6L1: "Basic communication",
+        p6L2: "Speaking support",
+        p6L3: "Learner-focused guidance",
+        processLabel: "How It Works",
+        processTitle: "কীভাবে শুরু করবেন",
+        processIntro: "একজন শিক্ষার্থী বা অভিভাবক কীভাবে সহজে শুরু করতে পারে তার সংক্ষিপ্ত ধাপ।",
+        step1Title: "Choose Program",
+        step1Text: "আপনার প্রয়োজন অনুযায়ী প্রোগ্রাম নির্বাচন করুন।",
+        step2Title: "Contact / Apply",
+        step2Text: "ফর্ম পূরণ করুন অথবা WhatsApp-এ যোগাযোগ করুন।",
+        step3Title: "Guidance",
+        step3Text: "শিক্ষার্থী অনুযায়ী সময়, কোর্স ও শিক্ষক গাইডলাইন দেওয়া হবে।",
+        step4Title: "Start Learning",
+        step4Text: "অনলাইন সিস্টেমে সুন্দরভাবে ক্লাস শুরু করুন।",
+        noticeLabel: "Notice Board",
+        noticeTitle: "নোটিশ ও আপডেট",
+        noticeIntro: "প্রতিষ্ঠানের সাম্প্রতিক আপডেট, নতুন ব্যাচ ও ভর্তি তথ্য।",
+        noticeBoxTitle: "সাম্প্রতিক নোটিশ",
+        n1Title: "নতুন ভর্তি চলমান",
+        n1Text: "Quran Reading, Hifz ও Kids Quran Program-এর জন্য যোগাযোগ করুন।",
+        n2Title: "Arabic ও Islamic Studies Support",
+        n2Text: "আরবি ও ইসলামিক স্টাডিজে আগ্রহীদের জন্য সাপোর্ট ব্যবস্থা রাখা হয়েছে।",
+        n3Title: "Multilingual Website",
+        n3Text: "বাংলা, English এবং العربية—তিন ভাষায় সাইট ব্যবহারের সুযোগ।",
+        highlightTitle: "Platform Highlights",
+        highlightText: "একটি গুছানো, প্রফেশনাল ও ইসলামিক ব্যালেন্সড online education platform হিসেবে সাজানো হয়েছে।",
+        stat1: "Languages",
+        stat2: "Programs",
+        stat3: "Contact Support",
+        admissionLabel: "Admission",
+        admissionTitle: "অনলাইন আবেদন",
+        admissionIntro: "প্রথম ধাপে display-based admission form রাখা হয়েছে। পরে real submission system যোগ করা যাবে।",
+        f1: "নাম",
+        f2: "মোবাইল / WhatsApp",
+        f3: "ইমেইল",
+        f4: "প্রোগ্রাম",
+        f5: "কার জন্য",
+        f6: "সুবিধাজনক সময়",
+        f7: "অতিরিক্ত তথ্য",
+        selfOpt: "নিজের জন্য",
+        childOpt: "সন্তানের জন্য",
+        otherOpt: "অন্যান্য",
+        applyBtn: "WhatsApp-এ আবেদন করুন",
+        emailBtn: "ইমেইল করুন",
+        formNote: "নোট: চাইলে পরবর্তীতে এই ফর্ম real submission-enabled করা যাবে।",
+        ctaTitle: "আজই যোগাযোগ করুন",
+        ctaText: "কোর্স, ভর্তি বা গাইডেন্সের বিষয়ে দ্রুত সাপোর্ট পেতে WhatsApp-এ যোগাযোগ করুন।",
+        ctaBtn: "WhatsApp Now",
+        contactLabel: "Contact",
+        contactTitle: "যোগাযোগ",
+        contactIntro: "প্রতিষ্ঠানের সাথে যুক্ত হতে বা বিস্তারিত জানতে নিচের তথ্য ব্যবহার করুন।",
+        contactBox1: "প্রতিষ্ঠানের তথ্য",
+        nameLabel: "নাম:",
+        waLabel: "WhatsApp:",
+        mailLabel: "Email:",
+        langLabel: "Languages:",
+        contactBox2: "অতিরিক্ত তথ্য",
+        extra1: "Online Islamic education platform",
+        extra2: "Quran, Hifz, Arabic, Islamic Studies & English",
+        extra3: "দেশ-বিদেশ থেকে অংশগ্রহণের সুযোগ",
+        extra4: "Social links পরে যোগ করা যাবে"
+      },
+
+      en: {
+        topbarText: "Online Quran, Language and Islamic Education Platform",
+        tagline: "Your trusted companion in the journey of Quran learning and Islamic knowledge.",
+        navHome: "Home",
+        navPrograms: "Programs",
+        navAbout: "About",
+        navNotice: "Notice",
+        navContact: "Contact",
+        heroBadge: "Professional • Islamic • Online",
+        heroTitle: "An Enlightened Future Through Knowledge",
+        heroDesc: "At Al-Mustanir Education Center, Quran education, kids Quran program, Hifz, Arabic language, Islamic Studies and English language are presented in a beautiful, refined and professional way.",
+        heroBtn1: "Apply Now",
+        heroBtn2: "WhatsApp Contact",
+        heroBtn3: "View Programs",
+        heroCardTitle: "Our Core Services",
+        heroList1: "Quran Reading & Tajweed",
+        heroList2: "Quran Memorization Program",
+        heroList3: "Kids Quran Learning",
+        heroList4: "Arabic Language Support",
+        heroList5: "Islamic Studies & English Language",
+        aboutLabel: "About Us",
+        aboutTitle: "About Us",
+        aboutIntro: "Al-Mustanir Education Center is an online Islamic education platform where Quran, Arabic, Islamic Studies and essential language education are organized together.",
+        aboutP1: "Our aim is to build a trusted platform where a learner can study Quran, help their child learn Quran, join Hifz, study Arabic and English, and move forward in foundational and advanced Islamic knowledge.",
+        aboutP2: "We are shaping this platform for your institution following a refined and structured educational model inspired by Rahmah Institute.",
+        aboutP3: "This website is organized to be usable in Bangla, English and Arabic.",
+        feature1Title: "Qualified Teachers",
+        feature1Text: "Learning through experienced, responsible and Islamically appropriate teachers.",
+        feature2Title: "Flexible Online Classes",
+        feature2Text: "Online model allows participation from home and abroad.",
+        feature3Title: "Structured Programs",
+        feature3Text: "Organized structure for Quran, Hifz, Arabic, Islamic Studies and language learning.",
+        feature4Title: "Easy Admission",
+        feature4Text: "Simple admission flow through form, WhatsApp and direct contact.",
+        programLabel: "Our Programs",
+        programTitle: "Programs & Courses",
+        programIntro: "Important programs arranged according to a Quran-focused online academy model.",
+        p1Title: "Quran Reading",
+        p1Sub: "Correct Quran learning with Tajweed",
+        p1Desc: "Guided Quran learning from basics to proper recitation.",
+        p1L1: "Noorani Qaida based beginning",
+        p1L2: "Tajweed guidance",
+        p1L3: "Beginner-friendly",
+        p2Title: "Quran Memorization",
+        p2Sub: "Hifz Program",
+        p2Desc: "Step-by-step memorization with revision-based planning.",
+        p2L1: "Daily memorization target",
+        p2L2: "Revision support",
+        p2L3: "Kids & adults",
+        p3Title: "Kids Quran Program",
+        p3Sub: "Quran learning for children",
+        p3Desc: "Easy, patient and Islamically mannered instruction for children.",
+        p3L1: "Child-friendly teaching",
+        p3L2: "Parent support",
+        p3L3: "Basic Islamic manners",
+        p4Title: "Arabic Language",
+        p4Sub: "Arabic learning",
+        p4Desc: "Structured Arabic support for understanding Quran and practicing the language.",
+        p4L1: "Basic to intermediate",
+        p4L2: "Tutor support",
+        p4L3: "Reading & understanding",
+        p5Title: "Islamic Studies",
+        p5Sub: "Islamic Studies",
+        p5Desc: "Foundational learning in Aqidah, Fiqh, Hadith and necessary Islamic knowledge.",
+        p5L1: "Foundational learning",
+        p5L2: "Teacher guidance",
+        p5L3: "Academic support",
+        p6Title: "English Language",
+        p6Sub: "English language",
+        p6Desc: "Basic English, communication skill and simple language support.",
+        p6L1: "Basic communication",
+        p6L2: "Speaking support",
+        p6L3: "Learner-focused guidance",
+        processLabel: "How It Works",
+        processTitle: "How to Begin",
+        processIntro: "A simple step-by-step flow for students and parents.",
+        step1Title: "Choose Program",
+        step1Text: "Select the program that fits your need.",
+        step2Title: "Contact / Apply",
+        step2Text: "Fill the form or contact us on WhatsApp.",
+        step3Title: "Guidance",
+        step3Text: "You will receive guidance on course, timing and learning path.",
+        step4Title: "Start Learning",
+        step4Text: "Start your classes beautifully through the online system.",
+        noticeLabel: "Notice Board",
+        noticeTitle: "Notices & Updates",
+        noticeIntro: "Recent updates, new batches and admission information.",
+        noticeBoxTitle: "Recent Notices",
+        n1Title: "New Admission Open",
+        n1Text: "Contact us for Quran Reading, Hifz and Kids Quran Program.",
+        n2Title: "Arabic and Islamic Studies Support",
+        n2Text: "Support is available for students interested in Arabic and Islamic Studies.",
+        n3Title: "Multilingual Website",
+        n3Text: "The website can be used in Bangla, English and Arabic.",
+        highlightTitle: "Platform Highlights",
+        highlightText: "Organized as a refined, professional and balanced Islamic online education platform.",
+        stat1: "Languages",
+        stat2: "Programs",
+        stat3: "Contact Support",
+        admissionLabel: "Admission",
+        admissionTitle: "Online Admission",
+        admissionIntro: "A display-based admission form is included in the first stage. Later it can be upgraded to a real submission system.",
+        f1: "Name",
+        f2: "Mobile / WhatsApp",
+        f3: "Email",
+        f4: "Program",
+        f5: "For Whom",
+        f6: "Preferred Time",
+        f7: "Additional Information",
+        selfOpt: "For myself",
+        childOpt: "For my child",
+        otherOpt: "Other",
+        applyBtn: "Apply on WhatsApp",
+        emailBtn: "Send Email",
+        formNote: "Note: This form can later be made submission-enabled.",
+        ctaTitle: "Contact Us Today",
+        ctaText: "For course, admission or guidance support, contact us quickly on WhatsApp.",
+        ctaBtn: "WhatsApp Now",
+        contactLabel: "Contact",
+        contactTitle: "Contact",
+        contactIntro: "Use the following details to connect with the institution.",
+        contactBox1: "Institution Information",
+        nameLabel: "Name:",
+        waLabel: "WhatsApp:",
+        mailLabel: "Email:",
+        langLabel: "Languages:",
+        contactBox2: "Additional Info",
+        extra1: "Online Islamic education platform",
+        extra2: "Quran, Hifz, Arabic, Islamic Studies & English",
+        extra3: "Participation available from home and abroad",
+        extra4: "Social links can be added later"
+      },
+
+      ar: {
+        topbarText: "منصة تعليمية للقرآن واللغات والدراسات الإسلامية عبر الإنترنت",
+        tagline: "رفيقكم الموثوق في رحلة تعلم القرآن واكتساب المعرفة الإسلامية.",
+        navHome: "الرئيسية",
+        navPrograms: "البرامج",
+        navAbout: "من نحن",
+        navNotice: "الإعلانات",
+        navContact: "اتصل بنا",
+        heroBadge: "احترافي • إسلامي • عبر الإنترنت",
+        heroTitle: "مستقبل مضيء بنور المعرفة",
+        heroDesc: "في Al-Mustanir Education Center يتم تقديم تعليم القرآن، وبرنامج الأطفال، والحفظ، واللغة العربية، والدراسات الإسلامية، واللغة الإنجليزية بطريقة جميلة وراقية واحترافية.",
+        heroBtn1: "قدّم الآن",
+        heroBtn2: "تواصل عبر واتساب",
+        heroBtn3: "عرض البرامج",
+        heroCardTitle: "خدماتنا الأساسية",
+        heroList1: "قراءة القرآن والتجويد",
+        heroList2: "برنامج حفظ القرآن",
+        heroList3: "تعليم القرآن للأطفال",
+        heroList4: "دعم اللغة العربية",
+        heroList5: "الدراسات الإسلامية واللغة الإنجليزية",
+        aboutLabel: "من نحن",
+        aboutTitle: "عن المؤسسة",
+        aboutIntro: "Al-Mustanir Education Center منصة تعليمية إسلامية عبر الإنترنت تجمع بين القرآن والعربية والدراسات الإسلامية وتعليم اللغات الأساسية.",
+        aboutP1: "هدفنا هو بناء منصة موثوقة يستطيع من خلالها الطالب تعلم القرآن، وتعليم أطفاله القرآن، والانضمام إلى برنامج الحفظ، وتعلم العربية والإنجليزية، والتقدم في المعرفة الإسلامية الأساسية والمتقدمة.",
+        aboutP2: "نقوم ببناء هذه المنصة لمؤسستكم وفق نموذج تعليمي منظم وراقي مستوحى من Rahmah Institute.",
+        aboutP3: "تم تنظيم هذا الموقع ليكون قابلاً للاستخدام بالبنغالية والإنجليزية والعربية.",
+        feature1Title: "معلمون مؤهلون",
+        feature1Text: "تعليم بإشراف معلمين ذوي خبرة ومسؤولية ومراعاة للبيئة الإسلامية.",
+        feature2Title: "دروس مرنة عبر الإنترنت",
+        feature2Text: "النظام عبر الإنترنت يتيح المشاركة من الداخل والخارج.",
+        feature3Title: "برامج منظمة",
+        feature3Text: "هيكل منظم للقرآن والحفظ والعربية والدراسات الإسلامية وتعليم اللغات.",
+        feature4Title: "قبول سهل",
+        feature4Text: "إجراءات سهلة عبر النموذج وواتساب والتواصل المباشر.",
+        programLabel: "برامجنا",
+        programTitle: "البرامج والدورات",
+        programIntro: "برامج مهمة مرتبة وفق نموذج أكاديمية قرآنية عبر الإنترنت.",
+        p1Title: "قراءة القرآن",
+        p1Sub: "تعلم القرآن بالتجويد الصحيح",
+        p1Desc: "تعلم موجّه للقرآن من الأساسيات إلى التلاوة الصحيحة.",
+        p1L1: "بداية مع القاعدة النورانية",
+        p1L2: "توجيه في التجويد",
+        p1L3: "مناسب للمبتدئين",
+        p2Title: "حفظ القرآن",
+        p2Sub: "برنامج الحفظ",
+        p2Desc: "حفظ تدريجي مع خطة مراجعة منظمة.",
+        p2L1: "هدف حفظ يومي",
+        p2L2: "دعم المراجعة",
+        p2L3: "للأطفال والكبار",
+        p3Title: "برنامج القرآن للأطفال",
+        p3Sub: "تعليم القرآن للأطفال",
+        p3Desc: "تعليم سهل وصبور ومناسب للأطفال مع مراعاة الآداب الإسلامية.",
+        p3L1: "أسلوب مناسب للأطفال",
+        p3L2: "دعم للأهل",
+        p3L3: "آداب إسلامية أساسية",
+        p4Title: "اللغة العربية",
+        p4Sub: "تعلم العربية",
+        p4Desc: "دعم منظم للغة العربية لفهم القرآن وممارسة اللغة.",
+        p4L1: "من الأساسي إلى المتوسط",
+        p4L2: "دعم من معلم",
+        p4L3: "القراءة والفهم",
+        p5Title: "الدراسات الإسلامية",
+        p5Sub: "الدراسات الإسلامية",
+        p5Desc: "تعلم أساسي في العقيدة والفقه والحديث والمعرفة الإسلامية اللازمة.",
+        p5L1: "تعلم تأسيسي",
+        p5L2: "إرشاد من المعلم",
+        p5L3: "دعم أكاديمي",
+        p6Title: "اللغة الإنجليزية",
+        p6Sub: "اللغة الإنجليزية",
+        p6Desc: "الإنجليزية الأساسية ومهارات التواصل ودعم لغوي بسيط.",
+        p6L1: "تواصل أساسي",
+        p6L2: "دعم المحادثة",
+        p6L3: "إرشاد يراعي مستوى المتعلم",
+        processLabel: "كيف يعمل",
+        processTitle: "كيف تبدأ",
+        processIntro: "خطوات بسيطة للطلاب وأولياء الأمور للبدء بسهولة.",
+        step1Title: "اختر البرنامج",
+        step1Text: "اختر البرنامج المناسب لاحتياجك.",
+        step2Title: "تواصل / قدّم",
+        step2Text: "املأ النموذج أو تواصل عبر واتساب.",
+        step3Title: "الإرشاد",
+        step3Text: "ستتلقى توجيهاً مناسباً للمسار والوقت والبرنامج.",
+        step4Title: "ابدأ التعلم",
+        step4Text: "ابدأ دروسك عبر النظام الإلكتروني بشكل منظم.",
+        noticeLabel: "لوحة الإعلانات",
+        noticeTitle: "الإعلانات والتحديثات",
+        noticeIntro: "آخر التحديثات والدفعات الجديدة ومعلومات القبول.",
+        noticeBoxTitle: "أحدث الإعلانات",
+        n1Title: "فتح التسجيل الجديد",
+        n1Text: "تواصل معنا لبرامج قراءة القرآن والحفظ وبرنامج الأطفال.",
+        n2Title: "دعم العربية والدراسات الإسلامية",
+        n2Text: "يتوفر دعم للمهتمين باللغة العربية والدراسات الإسلامية.",
+        n3Title: "موقع متعدد اللغات",
+        n3Text: "يمكن استخدام الموقع بالبنغالية والإنجليزية والعربية.",
+        highlightTitle: "مميزات المنصة",
+        highlightText: "تم تنظيمها كمنصة تعليمية إسلامية احترافية ومتوازنة عبر الإنترنت.",
+        stat1: "اللغات",
+        stat2: "البرامج",
+        stat3: "دعم التواصل",
+        admissionLabel: "القبول",
+        admissionTitle: "التقديم الإلكتروني",
+        admissionIntro: "تم تضمين نموذج عرض مبدئي للقبول، ويمكن لاحقاً تطويره إلى نظام إرسال فعلي.",
+        f1: "الاسم",
+        f2: "الهاتف / واتساب",
+        f3: "البريد الإلكتروني",
+        f4: "البرنامج",
+        f5: "لمن",
+        f6: "الوقت المناسب",
+        f7: "معلومات إضافية",
+        selfOpt: "لنفسي",
+        childOpt: "لطفلي",
+        otherOpt: "أخرى",
+        applyBtn: "قدّم عبر واتساب",
+        emailBtn: "أرسل بريداً",
+        formNote: "ملاحظة: يمكن لاحقاً تفعيل هذا النموذج للإرسال المباشر.",
+        ctaTitle: "تواصل معنا اليوم",
+        ctaText: "للحصول على دعم سريع بخصوص الدورات أو القبول أو الإرشاد، تواصل معنا عبر واتساب.",
+        ctaBtn: "واتساب الآن",
+        contactLabel: "اتصل بنا",
+        contactTitle: "التواصل",
+        contactIntro: "استخدم المعلومات التالية للتواصل مع المؤسسة.",
+        contactBox1: "معلومات المؤسسة",
+        nameLabel: "الاسم:",
+        waLabel: "واتساب:",
+        mailLabel: "البريد:",
+        langLabel: "اللغات:",
+        contactBox2: "معلومات إضافية",
+        extra1: "منصة تعليمية إسلامية عبر الإنترنت",
+        extra2: "القرآن، الحفظ، العربية، الدراسات الإسلامية والإنجليزية",
+        extra3: "إمكانية المشاركة من الداخل والخارج",
+        extra4: "يمكن إضافة الروابط الاجتماعية لاحقاً"
+      }
+    };
+
+    function setLang(lang){
+      document.documentElement.lang = lang;
+      document.body.style.direction = lang === 'ar' ? 'rtl' : 'ltr';
+      document.body.style.textAlign = lang === 'ar' ? 'right' : 'left';
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if(translations[lang] && translations[lang][key]){
+          el.textContent = translations[lang][key];
+        }
+      });
+
+      document.querySelectorAll('.lang-switch button').forEach(btn => btn.classList.remove('active'));
+      if(lang === 'bn') document.querySelectorAll('.lang-switch button')[0].classList.add('active');
+      if(lang === 'en') document.querySelectorAll('.lang-switch button')[1].classList.add('active');
+      if(lang === 'ar') document.querySelectorAll('.lang-switch button')[2].classList.add('active');
+    }
+  </script>
 </body>
 </html><!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Al-Mustanir Education Center</title>
+  <meta name="description" content="Al-Mustanir Education Center - Online Quran, Arabic, English and Islamic education platform." />
+  <style>
+    :root{
+      --navy:#0f2238;
+      --navy-2:#173553;
+      --green:#157347;
+      --gold:#c9a54c;
+      --bg:#f4f7fb;
+      --card:#ffffff;
+      --text:#1f2937;
+      --muted:#64748b;
+      --line:#e5e7eb;
+      --shadow:0 10px 30px rgba(15,34,56,.08);
+      --radius:20px;
+      --max:1180px;
+    }
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
 
-<title>Al-Mustanir Education Center</title>
+    body{
+      font-family: Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.65;
+    }
 
-<style>
+    a{ text-decoration:none; color:inherit; }
+    img{ max-width:100%; display:block; }
 
-body{
-font-family: Arial;
-margin:0;
-background:#f4f6f8;
-}
+    .container{
+      width:min(var(--max), 92%);
+      margin:auto;
+    }
 
-header{
-background:#0f3d2e;
-color:white;
-padding:20px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-}
+    .topbar{
+      background:var(--navy);
+      color:#e5edf6;
+      padding:10px 0;
+      font-size:14px;
+    }
 
-.logo{
-display:flex;
-align-items:center;
-}
+    .topbar .container{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:15px;
+      flex-wrap:wrap;
+    }
 
-.logo img{
-width:70px;
-margin-right:10px;
-}
+    .lang-switch{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
 
-nav a{
-color:white;
-margin:0 10px;
-text-decoration:none;
-font-weight:bold;
-}
+    .lang-switch button{
+      border:none;
+      background:#203a57;
+      color:#fff;
+      padding:8px 12px;
+      border-radius:10px;
+      cursor:pointer;
+      font-size:13px;
+      font-weight:bold;
+    }
 
-.hero{
-background:#eaf3ef;
-padding:80px 20px;
-text-align:center;
-}
+    .lang-switch button.active{
+      background:var(--gold);
+      color:var(--navy);
+    }
 
-.hero h1{
-font-size:40px;
-color:#0f3d2e;
-}
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(15,34,56,.96);
+      backdrop-filter:blur(10px);
+      box-shadow:0 4px 20px rgba(0,0,0,.12);
+    }
 
-.hero p{
-font-size:18px;
-}
+    .navbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+      padding:16px 0;
+      flex-wrap:wrap;
+    }
 
-.btn{
-background:#0f6a3b;
-color:white;
-padding:12px 25px;
-display:inline-block;
-margin-top:20px;
-text-decoration:none;
-border-radius:5px;
-}
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
 
-.section{
-padding:60px 20px;
-max-width:1000px;
-margin:auto;
-}
+    .brand img{
+      width:64px;
+      height:64px;
+      object-fit:contain;
+      background:#fff;
+      border-radius:14px;
+      padding:4px;
+    }
 
-.section h2{
-text-align:center;
-color:#0f3d2e;
-margin-bottom:30px;
-}
+    .brand-text h1{
+      color:#fff;
+      font-size:24px;
+      line-height:1.15;
+      margin-bottom:3px;
+    }
 
-.courses{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
+    .brand-text p{
+      color:#d2dbe6;
+      font-size:13px;
+      max-width:500px;
+    }
 
-.course{
-background:white;
-padding:20px;
-border-radius:6px;
-box-shadow:0 0 10px rgba(0,0,0,0.1);
-}
+    nav{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
 
-.notice{
-background:#fff;
-padding:20px;
-border-left:5px solid #0f6a3b;
-margin-bottom:10px;
-}
+    nav a{
+      color:#f8fafc;
+      font-weight:600;
+      font-size:15px;
+    }
 
-footer{
-background:#0f3d2e;
-color:white;
-padding:30px;
-text-align:center;
-}
+    nav a:hover{
+      color:#f4cf77;
+    }
 
-</style>
+    .hero{
+      background:
+        linear-gradient(rgba(15,34,56,.82), rgba(15,34,56,.82)),
+        url('https://images.unsplash.com/photo-1519817650390-64a93db511aa?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+      color:#fff;
+      padding:90px 0 80px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:28px;
+      align-items:center;
+    }
+
+    .badge{
+      display:inline-block;
+      background:rgba(255,255,255,.1);
+      color:#f7d98d;
+      border:1px solid rgba(255,255,255,.15);
+      padding:9px 14px;
+      border-radius:999px;
+      margin-bottom:18px;
+      font-size:14px;
+      font-weight:700;
+    }
+
+    .hero h2{
+      font-size:52px;
+      line-height:1.15;
+      margin-bottom:16px;
+    }
+
+    .hero p{
+      font-size:18px;
+      color:#e6edf5;
+      max-width:760px;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:26px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 22px;
+      border-radius:12px;
+      font-weight:700;
+      transition:.2s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .btn-primary{
+      background:var(--gold);
+      color:var(--navy);
+    }
+
+    .btn-secondary{
+      background:#fff;
+      color:var(--navy);
+    }
+
+    .btn-outline{
+      border:1px solid rgba(255,255,255,.25);
+      color:#fff;
+      background:transparent;
+    }
+
+    .hero-card{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:24px;
+      padding:26px;
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(10px);
+    }
+
+    .hero-card h3{
+      color:#f7d98d;
+      font-size:24px;
+      margin-bottom:12px;
+    }
+
+    .hero-card ul{
+      padding-left:20px;
+      color:#eef4fb;
+    }
+
+    .hero-card li{
+      margin:10px 0;
+    }
+
+    section{
+      padding:80px 0;
+    }
+
+    .section-head{
+      text-align:center;
+      margin-bottom:36px;
+    }
+
+    .section-head span{
+      display:inline-block;
+      color:var(--gold);
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      font-size:13px;
+      font-weight:800;
+      margin-bottom:10px;
+    }
+
+    .section-head h3{
+      font-size:38px;
+      color:var(--navy);
+      margin-bottom:10px;
+    }
+
+    .section-head p{
+      max-width:760px;
+      margin:auto;
+      color:var(--muted);
+      font-size:17px;
+    }
+
+    .cards-2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+    }
+
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
+
+    .about-card p{
+      margin-bottom:14px;
+      color:#374151;
+      font-size:17px;
+    }
+
+    .feature-list{
+      display:grid;
+      gap:16px;
+    }
+
+    .feature-item{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:16px;
+      background:#f8fafc;
+    }
+
+    .feature-num{
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      background:#eaf0f7;
+      color:var(--navy);
+      display:grid;
+      place-items:center;
+      font-weight:800;
+      flex-shrink:0;
+    }
+
+    .program-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+    }
+
+    .program-card{
+      background:#fff;
+      border-radius:20px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      border:1px solid #e9edf2;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .program-top{
+      background:linear-gradient(135deg, var(--navy-2), var(--navy));
+      color:#fff;
+      padding:22px;
+    }
+
+    .program-top h4{
+      font-size:22px;
+      margin-bottom:8px;
+    }
+
+    .program-body{
+      padding:22px;
+      flex:1;
+    }
+
+    .program-body p{
+      color:#4b5563;
+      margin-bottom:14px;
+    }
+
+    .program-body ul{
+      padding-left:18px;
+      color:#374151;
+    }
+
+    .program-body li{
+      margin:8px 0;
+    }
+
+    .process-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+
+    .process-card{
+      background:#fff;
+      border-radius:18px;
+      padding:24px;
+      text-align:center;
+      box-shadow:var(--shadow);
+    }
+
+    .process-badge{
+      width:52px;
+      height:52px;
+      margin:0 auto 14px;
+      border-radius:50%;
+      background:var(--gold);
+      color:var(--navy);
+      display:grid;
+      place-items:center;
+      font-weight:800;
+      font-size:18px;
+    }
+
+    .notice-grid{
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      gap:24px;
+    }
+
+    .notice-box{
+      background:#fff;
+      border-radius:20px;
+      padding:26px;
+      box-shadow:var(--shadow);
+    }
+
+    .notice-box h4{
+      font-size:24px;
+      color:var(--navy);
+      margin-bottom:16px;
+    }
+
+    .notice-item{
+      border-left:4px solid var(--gold);
+      background:#fafbfd;
+      padding:14px 16px;
+      border-radius:10px;
+      margin-bottom:14px;
+    }
+
+    .notice-item strong{
+      display:block;
+      color:var(--navy);
+      margin-bottom:4px;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+      margin-top:18px;
+    }
+
+    .stat{
+      background:#f8fafc;
+      border:1px solid var(--line);
+      border-radius:14px;
+      text-align:center;
+      padding:18px;
+    }
+
+    .stat h5{
+      font-size:28px;
+      color:var(--navy);
+      margin-bottom:4px;
+    }
+
+    .admission{
+      background:#fff;
+      border-radius:24px;
+      padding:28px;
+      box-shadow:var(--shadow);
+      max-width:960px;
+      margin:auto;
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .field label{
+      display:block;
+      font-weight:700;
+      margin-bottom:7px;
+      color:#334155;
+      font-size:14px;
+    }
+
+    .field input,
+    .field select,
+    .field textarea{
+      width:100%;
+      padding:13px 14px;
+      border:1px solid #d6dde5;
+      border-radius:12px;
+      font-size:15px;
+      background:#fff;
+    }
+
+    .field textarea{
+      min-height:130px;
+      resize:vertical;
+    }
+
+    .full{
+      grid-column:1/-1;
+    }
+
+    .form-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+
+    .small-note{
+      margin-top:14px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .cta{
+      background:linear-gradient(135deg, var(--green), #12945a);
+      color:#fff;
+      border-radius:24px;
+      padding:34px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+      flex-wrap:wrap;
+      box-shadow:var(--shadow);
+    }
+
+    .cta h4{
+      font-size:30px;
+      margin-bottom:8px;
+    }
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+    }
+
+    .contact-card{
+      background:#fff;
+      border-radius:20px;
+      padding:26px;
+      box-shadow:var(--shadow);
+    }
+
+    .contact-card h4{
+      font-size:24px;
+      color:var(--navy);
+      margin-bottom:14px;
+    }
+
+    .contact-card p{
+      margin:10px 0;
+      color:#374151;
+    }
+
+    footer{
+      background:var(--navy);
+      color:#dbe6f1;
+      padding:28px 0;
+      margin-top:20px;
+    }
+
+    .footer-wrap{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    @media (max-width: 992px){
+      .hero-grid,
+      .cards-2,
+      .notice-grid,
+      .contact-grid{
+        grid-template-columns:1fr;
+      }
+
+      .program-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .process-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .hero h2{
+        font-size:40px;
+      }
+
+      .navbar{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+
+    @media (max-width: 640px){
+      .program-grid,
+      .process-grid,
+      .stats,
+      .form-grid{
+        grid-template-columns:1fr;
+      }
+
+      .brand img{
+        width:54px;
+        height:54px;
+      }
+
+      .brand-text h1{
+        font-size:20px;
+      }
+
+      .hero{
+        padding:72px 0 60px;
+      }
+
+      .hero h2{
+        font-size:31px;
+      }
+
+      .section-head h3{
+        font-size:30px;
+      }
+
+      .cta h4{
+        font-size:24px;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<header>
-
-<div class="logo">
-
-<img src="logo.png">
-
-<div>
-
-<h2>Al-Mustanir Education Center</h2>
-
-<small>কুরআন শিক্ষা এবং ইসলামী জ্ঞান অর্জনের পদযাত্রায় আপনার বিশ্বস্ত সঙ্গী।</small>
-
-</div>
-
-</div>
-
-<nav>
-
-<a href="#">Home</a>
-<a href="#courses">Courses</a>
-<a href="#about">About</a>
-<a href="#notice">Notice</a>
-<a href="#contact">Contact</a>
-
-</nav>
-
-</header>
-
-
-<section class="hero">
-
-<h1>Learn Quran & Islamic Knowledge Online</h1>
-
-<p>Join our Islamic online academy and start learning Quran, Arabic and Islamic studies.</p>
-
-<a class="btn" href="https://wa.me/8801614917650">Apply Now</a>
-
-</section>
-
-
-<section class="section" id="courses">
-
-<h2>Our Programs</h2>
-
-<div class="courses">
-
-<div class="course">
-
-<h3>Quran Reading</h3>
-
-<p>Learn Quran with proper Tajweed from experienced teachers.</p>
-
-</div>
-
-<div class="course">
-
-<h3>Quran Memorization (Hifz)</h3>
-
-<p>Structured memorization program for students of all ages.</p>
-
-</div>
-
-<div class="course">
-
-<h3>Kids Quran Program</h3>
-
-<p>Special Quran classes designed for children.</p>
-
-</div>
-
-<div class="course">
-
-<h3>Arabic Language</h3>
-
-<p>Learn Arabic language for understanding Quran and Islamic texts.</p>
-
-</div>
-
-<div class="course">
-
-<h3>Islamic Studies</h3>
-
-<p>Basic Islamic knowledge including Aqidah, Fiqh and Hadith.</p>
-
-</div>
-
-<div class="course">
-
-<h3>English Language</h3>
-
-<p>Improve your English communication skills.</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-<section class="section" id="about">
-
-<h2>About Us</h2>
-
-<p>
-
-Al-Mustanir Education Center is an online Islamic learning platform dedicated to providing authentic Quran education and Islamic knowledge.
-
-</p>
-
-<p>
-
-Our mission is to help students around the world learn Quran, Arabic and Islamic studies in a simple and professional way.
-
-</p>
-
-</section>
-
-
-<section class="section" id="notice">
-
-<h2>Notice Board</h2>
-
-<div class="notice">
-
-New Quran classes are starting soon. Contact us for admission.
-
-</div>
-
-<div class="notice">
-
-Free consultation available through WhatsApp.
-
-</div>
-
-</section>
-
-
-<section class="section" id="contact">
-
-<h2>Contact Us</h2>
-
-<p>
-
-WhatsApp: 8801614917650
-
-</p>
-
-<p>
-
-Email: minhazulislamnuman9@gmail.com
-
-</p>
-
-</section>
-
-
-<footer>
-
-© 2026 Al-Mustanir Education Center
-
-</footer>
-
-
+  <div class="topbar">
+    <div class="container">
+      <div data-i18n="topbarText">অনলাইন কুরআন, ভাষা ও ইসলামিক শিক্ষা প্ল্যাটফর্ম</div>
+      <div class="lang-switch">
+        <button class="active" onclick="setLang('bn')">বাংলা</button>
+        <button onclick="setLang('en')">English</button>
+        <button onclick="setLang('ar')">العربية</button>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <div class="container navbar">
+      <div class="brand">
+        <img src="logo.png" alt="Al-Mustanir Education Center Logo">
+        <div class="brand-text">
+          <h1>Al-Mustanir Education Center</h1>
+          <p data-i18n="tagline">কুরআন শিক্ষা এবং ইসলামী জ্ঞান অর্জনের পদযাত্রায় আপনার বিশ্বস্ত সঙ্গী।</p>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#home" data-i18n="navHome">Home</a>
+        <a href="#programs" data-i18n="navPrograms">Programs</a>
+        <a href="#about" data-i18n="navAbout">About</a>
+        <a href="#notice" data-i18n="navNotice">Notice</a>
+        <a href="#contact" data-i18n="navContact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <div class="badge" data-i18n="heroBadge">Professional • Islamic • Online</div>
+        <h2 data-i18n="heroTitle">জ্ঞানের আলোয় আলোকিত ভবিষ্যৎ</h2>
+        <p data-i18n="heroDesc">
+          Al-Mustanir Education Center-এ কুরআন শিক্ষা, কিডস কুরআন প্রোগ্রাম, হিফজ, আরবি ভাষা, ইসলামিক স্টাডিজ এবং ইংলিশ ল্যাঙ্গুয়েজ—সুন্দর, মার্জিত ও প্রফেশনালভাবে উপস্থাপন করা হবে।
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#admission" data-i18n="heroBtn1">এখনই ভর্তি হন</a>
+          <a class="btn btn-secondary" href="https://wa.me/8801614917650" target="_blank" data-i18n="heroBtn2">WhatsApp যোগাযোগ</a>
+          <a class="btn btn-outline" href="#programs" data-i18n="heroBtn3">Programs দেখুন</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h3 data-i18n="heroCardTitle">আমাদের মূল সেবাসমূহ</h3>
+        <ul>
+          <li data-i18n="heroList1">Quran Reading & Tajweed</li>
+          <li data-i18n="heroList2">Quran Memorization Program</li>
+          <li data-i18n="heroList3">Kids Quran Learning</li>
+          <li data-i18n="heroList4">Arabic Language Support</li>
+          <li data-i18n="heroList5">Islamic Studies & English Language</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <span data-i18n="aboutLabel">About Us</span>
+        <h3 data-i18n="aboutTitle">আমাদের সম্পর্কে</h3>
+        <p data-i18n="aboutIntro">
+          Al-Mustanir Education Center একটি অনলাইন ইসলামিক শিক্ষা প্ল্যাটফর্ম, যেখানে কুরআন, আরবি, ইসলামিক স্টাডিজ এবং প্রয়োজনীয় ভাষা শিক্ষা একসাথে সাজানো হয়েছে।
+        </p>
+      </div>
+
+      <div class="cards-2">
+        <div class="card about-card">
+          <p data-i18n="aboutP1">
+            আমাদের লক্ষ্য হলো এমন একটি বিশ্বাসযোগ্য প্ল্যাটফর্ম তৈরি করা, যেখানে একজন শিক্ষার্থী নিজে কুরআন শিখতে পারে, নিজের সন্তানকে কুরআন শেখাতে পারে, হিফজ প্রোগ্রামে যুক্ত হতে পারে, আরবি ও ইংরেজি শিখতে পারে এবং ইসলামিক জ্ঞানের মৌলিক ও উন্নত অংশে এগোতে পারে।
+          </p>
+          <p data-i18n="aboutP2">
+            আমরা Rahmah Institute ধরনের একটি সাজানো, মার্জিত ও structured educational model অনুসরণ করে তোমার প্রতিষ্ঠানের জন্য এই প্ল্যাটফর্ম দাঁড় করাচ্ছি।
+          </p>
+          <p data-i18n="aboutP3">
+            এই ওয়েবসাইট বাংলা, English এবং العربية—তিন ভাষায় ব্যবহারযোগ্যভাবে সাজানো হয়েছে।
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="feature-list">
+            <div class="feature-item">
+              <div class="feature-num">01</div>
+              <div>
+                <strong data-i18n="feature1Title">Qualified Teachers</strong>
+                <p data-i18n="feature1Text">অভিজ্ঞ, দায়িত্বশীল ও ইসলামিক পরিবেশসম্মত শিক্ষক দ্বারা পাঠদান।</p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-num">02</div>
+              <div>
+                <strong data-i18n="feature2Title">Flexible Online Classes</strong>
+                <p data-i18n="feature2Text">অনলাইন ভিত্তিক হওয়ায় দেশ-বিদেশ থেকে অংশগ্রহণের সুযোগ।</p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-num">03</div>
+              <div>
+                <strong data-i18n="feature3Title">Structured Programs</strong>
+                <p data-i18n="feature3Text">Quran, Hifz, Arabic, Islamic Studies ও Language Learning-এর সাজানো কাঠামো।</p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-num">04</div>
+              <div>
+                <strong data-i18n="feature4Title">Easy Admission</strong>
+                <p data-i18n="feature4Text">ফর্ম, WhatsApp ও সরাসরি যোগাযোগের সহজ ব্যবস্থা।</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="programs">
+    <div class="container">
+      <div class="section-head">
+        <span data-i18n="programLabel">Our Programs</span>
+        <h3 data-i18n="programTitle">Programs & Courses</h3>
+        <p data-i18n="programIntro">
+          Quran-focused online academy model অনুসারে সাজানো কিছু গুরুত্বপূর্ণ প্রোগ্রাম।
+        </p>
+      </div>
+
+      <div class="program-grid">
+        <div class="program-card">
+          <div class="program-top">
+            <h4 data-i18n="p1Title">Quran Reading</h4>
+            <p data-i18n="p1Sub">তাজবিদসহ শুদ্ধ কুরআন শিক্ষা</p>
+          </div>
+          <div class="program-body">
+            <p data-i18n="p1Desc">মৌলিক থেকে শুদ্ধ তিলাওয়াত পর্যন্ত গাইডেড কুরআন লার্নিং।</p>
+            <ul>
+              <li data-i18n="p1L1">Noorani Qaida ভিত্তিক শুরু</li>
+              <li data-i18n="p1L2">তাজবিদ গাইডেন্স</li>
+              <li data-i18n="p1L3">Beginner-friendly</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="program-card">
+          <div class="program-top">
+            <h4 data-i18n="p2Title">Quran Memorization</h4>
+            <p data-i18n="p2Sub">হিফজ প্রোগ্রাম</p>
+          </div>
+          <div class="program-body">
+            <p data-i18n="p2Desc">শিক্ষার্থীদের জন্য ধাপে ধাপে হিফজ ও revision-based পরিকল্পনা।</p>
+            <ul>
+              <li data-i18n="p2L1">Daily memorization target</li>
+              <li data-i18n="p2L2">Revision support</li>
+              <li data-i18n="p2L3">Kids & adults</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="program-card">
+          <div class="program-top">
+            <h4 data-i18n="p3Title">Kids Quran Program</h4>
+            <p data-i18n="p3Sub">সন্তানের জন্য কুরআন শেখার ব্যবস্থা</p>
+          </div>
+          <div class="program-body">
+            <p data-i18n="p3Desc">শিশুদের জন্য সহজ, ধৈর্যশীল ও ইসলামিক আদবসম্মত পাঠদান।</p>
+            <ul>
+              <li data-i18n="p3L1">Child-friendly teaching</li>
+              <li data-i18n="p3L2">Parent support</li>
+              <li data-i18n="p3L3">Basic Islamic manners</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="program-card">
+          <div class="program-top">
+            <h4 data-i18n="p4Title">Arabic Language</h4>
+            <p data-i18n="p4Sub">আরবি ভাষা শিক্ষা</p>
+          </div>
+          <div class="program-body">
+            <p data-i18n="p4Desc">কুরআন বুঝতে ও আরবি চর্চার জন্য structured language support।</p>
+            <ul>
+              <li data-i18n="p4L1">Basic to intermediate</li>
+              <li data-i18n="p4L2">Tutor support</li>
+              <li data-i18n="p4L3">Reading & understanding</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="program-card">
+          <div class="program-top">
+            <h4 data-i18n="p5Title">Islamic Studies</h4>
+            <p data-i18n="p5Sub">ইসলামিক স্টাডিজ</p>
+          </div>
+          <div class="program-body">
+            <p data-i18n="p5Desc">আকিদা, ফিকহ, হাদিস ও প্রয়োজনীয় ইসলামিক জ্ঞানের ভিত্তিমূলক পাঠ।</p>
+            <ul>
+              <li data-i18n="p5L1">Foundational learning</li>
+              <li data-i18n="p5L2">Teacher guidance</li>
+              <li data-i18n="p5L3">Academic support</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="program-card">
+          <div class="program-top">
+            <h4 data-i18n="p6Title">English Language</h4>
+            <p data-i18n="p6Sub">ইংলিশ ল্যাঙ্গুয়েজ</p>
+          </div>
+          <div class="program-body">
+            <p data-i18n="p6Desc">মৌলিক ইংরেজি, যোগাযোগ দক্ষতা ও সহজ language support।</p>
+            <ul>
+              <li data-i18n="p6L1">Basic communication</li>
+              <li data-i18n="p6L2">Speaking support</li>
+              <li data-i18n="p6L3">Learner-focused guidance</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <span data-i18n="processLabel">How It Works</span>
+        <h3 data-i18n="processTitle">কীভাবে শুরু করবেন</h3>
+        <p data-i18n="processIntro">একজন শিক্ষার্থী বা অভিভাবক কীভাবে সহজে শুরু করতে পারে তার সংক্ষিপ্ত ধাপ।</p>
+      </div>
+
+      <div class="process-grid">
+        <div class="process-card">
+          <div class="process-badge">1</div>
+          <h4 data-i18n="step1Title">Choose Program</h4>
+          <p data-i18n="step1Text">আপনার প্রয়োজন অনুযায়ী প্রোগ্রাম নির্বাচন করুন।</p>
+        </div>
+
+        <div class="process-card">
+          <div class="process-badge">2</div>
+          <h4 data-i18n="step2Title">Contact / Apply</h4>
+          <p data-i18n="step2Text">ফর্ম পূরণ করুন অথবা WhatsApp-এ যোগাযোগ করুন।</p>
+        </div>
+
+        <div class="process-card">
+          <div class="process-badge">3</div>
+          <h4 data-i18n="step3Title">Guidance</h4>
+          <p data-i18n="step3Text">শিক্ষার্থী অনুযায়ী সময়, কোর্স ও শিক্ষক গাইডলাইন দেওয়া হবে।</p>
+        </div>
+
+        <div class="process-card">
+          <div class="process-badge">4</div>
+          <h4 data-i18n="step4Title">Start Learning</h4>
+          <p data-i18n="step4Text">অনলাইন সিস্টেমে সুন্দরভাবে ক্লাস শুরু করুন।</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="notice">
+    <div class="container">
+      <div class="section-head">
+        <span data-i18n="noticeLabel">Notice Board</span>
+        <h3 data-i18n="noticeTitle">নোটিশ ও আপডেট</h3>
+        <p data-i18n="noticeIntro">প্রতিষ্ঠানের সাম্প্রতিক আপডেট, নতুন ব্যাচ ও ভর্তি তথ্য।</p>
+      </div>
+
+      <div class="notice-grid">
+        <div class="notice-box">
+          <h4 data-i18n="noticeBoxTitle">সাম্প্রতিক নোটিশ</h4>
+
+          <div class="notice-item">
+            <strong data-i18n="n1Title">নতুন ভর্তি চলমান</strong>
+            <span data-i18n="n1Text">Quran Reading, Hifz ও Kids Quran Program-এর জন্য যোগাযোগ করুন।</span>
+          </div>
+
+          <div class="notice-item">
+            <strong data-i18n="n2Title">Arabic ও Islamic Studies Support</strong>
+            <span data-i18n="n2Text">আরবি ও ইসলামিক স্টাডিজে আগ্রহীদের জন্য সাপোর্ট ব্যবস্থা রাখা হয়েছে।</span>
+          </div>
+
+          <div class="notice-item">
+            <strong data-i18n="n3Title">Multilingual Website</strong>
+            <span data-i18n="n3Text">বাংলা, English এবং العربية—তিন ভাষায় সাইট ব্যবহারের সুযোগ।</span>
+          </div>
+        </div>
+
+        <div class="notice-box">
+          <h4 data-i18n="highlightTitle">Platform Highlights</h4>
+          <p data-i18n="highlightText">একটি গুছানো, প্রফেশনাল ও ইসলামিক ব্যালেন্সড online education platform হিসেবে সাজানো হয়েছে।</p>
+
+          <div class="stats">
+            <div class="stat">
+              <h5>3</h5>
+              <p data-i18n="stat1">Languages</p>
+            </div>
+            <div class="stat">
+              <h5>6</h5>
+              <p data-i18n="stat2">Programs</p>
+            </div>
+            <div class="stat">
+              <h5>24/7</h5>
+              <p data-i18n="stat3">Contact Support</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="admission">
+    <div class="container">
+      <div class="section-head">
+        <span data-i18n="admissionLabel">Admission</span>
+        <h3 data-i18n="admissionTitle">অনলাইন আবেদন</h3>
+        <p data-i18n="admissionIntro">প্রথম ধাপে display-based admission form রাখা হয়েছে। পরে real submission system যোগ করা যাবে।</p>
+      </div>
+
+      <div class="admission">
+        <div class="form-grid">
+          <div class="field">
+            <label data-i18n="f1">নাম</label>
+            <input type="text" placeholder="আপনার নাম লিখুন">
+          </div>
+
+          <div class="field">
+            <label data-i18n="f2">মোবাইল / WhatsApp</label>
+            <input type="text" placeholder="8801XXXXXXXXX">
+          </div>
+
+          <div class="field">
+            <label data-i18n="f3">ইমেইল</label>
+            <input type="email" placeholder="আপনার ইমেইল">
+          </div>
+
+          <div class="field">
+            <label data-i18n="f4">প্রোগ্রাম</label>
+            <select>
+              <option>Quran Reading</option>
+              <option>Quran Memorization</option>
+              <option>Kids Quran Program</option>
+              <option>Arabic Language</option>
+              <option>Islamic Studies</option>
+              <option>English Language</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label data-i18n="f5">কার জন্য</label>
+            <select>
+              <option data-i18n="selfOpt">নিজের জন্য</option>
+              <option data-i18n="childOpt">সন্তানের জন্য</option>
+              <option data-i18n="otherOpt">অন্যান্য</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label data-i18n="f6">সুবিধাজনক সময়</label>
+            <input type="text" placeholder="সকাল / বিকাল / রাত">
+          </div>
+
+          <div class="field full">
+            <label data-i18n="f7">অতিরিক্ত তথ্য</label>
+            <textarea placeholder="আপনার প্রয়োজন সম্পর্কে লিখুন"></textarea>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <a class="btn btn-primary" href="https://wa.me/8801614917650" target="_blank" data-i18n="applyBtn">WhatsApp-এ আবেদন করুন</a>
+          <a class="btn btn-secondary" href="mailto:minhazulislamnuman9@gmail.com" data-i18n="emailBtn">ইমেইল করুন</a>
+        </div>
+
+        <div class="small-note" data-i18n="formNote">
+          নোট: চাইলে পরবর্তীতে এই ফর্ম real submission-enabled করা যাবে।
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="cta">
+        <div>
+          <h4 data-i18n="ctaTitle">আজই যোগাযোগ করুন</h4>
+          <p data-i18n="ctaText">কোর্স, ভর্তি বা গাইডেন্সের বিষয়ে দ্রুত সাপোর্ট পেতে WhatsApp-এ যোগাযোগ করুন।</p>
+        </div>
+        <div>
+          <a class="btn btn-secondary" href="https://wa.me/8801614917650" target="_blank" data-i18n="ctaBtn">WhatsApp Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-head">
+        <span data-i18n="contactLabel">Contact</span>
+        <h3 data-i18n="contactTitle">যোগাযোগ</h3>
+        <p data-i18n="contactIntro">প্রতিষ্ঠানের সাথে যুক্ত হতে বা বিস্তারিত জানতে নিচের তথ্য ব্যবহার করুন।</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h4 data-i18n="contactBox1">প্রতিষ্ঠানের তথ্য</h4>
+          <p><strong data-i18n="nameLabel">নাম:</strong> Al-Mustanir Education Center</p>
+          <p><strong data-i18n="waLabel">WhatsApp:</strong> <a href="https://wa.me/8801614917650" target="_blank">8801614917650</a></p>
+          <p><strong data-i18n="mailLabel">Email:</strong> <a href="mailto:minhazulislamnuman9@gmail.com">minhazulislamnuman9@gmail.com</a></p>
+          <p><strong data-i18n="langLabel">Languages:</strong> বাংলা, English, العربية</p>
+        </div>
+
+        <div class="contact-card">
+          <h4 data-i18n="contactBox2">অতিরিক্ত তথ্য</h4>
+          <p data-i18n="extra1">Online Islamic education platform</p>
+          <p data-i18n="extra2">Quran, Hifz, Arabic, Islamic Studies & English</p>
+          <p data-i18n="extra3">দেশ-বিদেশ থেকে অংশগ্রহণের সুযোগ</p>
+          <p data-i18n="extra4">Social links পরে যোগ করা যাবে</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-wrap">
+      <p>© 2026 Al-Mustanir Education Center. All Rights Reserved.</p>
+      <p><a href="mailto:minhazulislamnuman9@gmail.com" style="color:#dbe6f1;">minhazulislamnuman9@gmail.com</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const translations = {
+      bn: {
+        topbarText: "অনলাইন কুরআন, ভাষা ও ইসলামিক শিক্ষা প্ল্যাটফর্ম",
+        tagline: "কুরআন শিক্ষা এবং ইসলামী জ্ঞান অর্জনের পদযাত্রায় আপনার বিশ্বস্ত সঙ্গী।",
+        navHome: "Home",
+        navPrograms: "Programs",
+        navAbout: "About",
+        navNotice: "Notice",
+        navContact: "Contact",
+        heroBadge: "Professional • Islamic • Online",
+        heroTitle: "জ্ঞানের আলোয় আলোকিত ভবিষ্যৎ",
+        heroDesc: "Al-Mustanir Education Center-এ কুরআন শিক্ষা, কিডস কুরআন প্রোগ্রাম, হিফজ, আরবি ভাষা, ইসলামিক স্টাডিজ এবং ইংলিশ ল্যাঙ্গুয়েজ—সুন্দর, মার্জিত ও প্রফেশনালভাবে উপস্থাপন করা হবে।",
+        heroBtn1: "এখনই ভর্তি হন",
+        heroBtn2: "WhatsApp যোগাযোগ",
+        heroBtn3: "Programs দেখুন",
+        heroCardTitle: "আমাদের মূল সেবাসমূহ",
+        heroList1: "Quran Reading & Tajweed",
+        heroList2: "Quran Memorization Program",
+        heroList3: "Kids Quran Learning",
+        heroList4: "Arabic Language Support",
+        heroList5: "Islamic Studies & English Language",
+        aboutLabel: "About Us",
+        aboutTitle: "আমাদের সম্পর্কে",
+        aboutIntro: "Al-Mustanir Education Center একটি অনলাইন ইসলামিক শিক্ষা প্ল্যাটফর্ম, যেখানে কুরআন, আরবি, ইসলামিক স্টাডিজ এবং প্রয়োজনীয় ভাষা শিক্ষা একসাথে সাজানো হয়েছে।",
+        aboutP1: "আমাদের লক্ষ্য হলো এমন একটি বিশ্বাসযোগ্য প্ল্যাটফর্ম তৈরি করা, যেখানে একজন শিক্ষার্থী নিজে কুরআন শিখতে পারে, নিজের সন্তানকে কুরআন শেখাতে পারে, হিফজ প্রোগ্রামে যুক্ত হতে পারে, আরবি ও ইংরেজি শিখতে পারে এবং ইসলামিক জ্ঞানের মৌলিক ও উন্নত অংশে এগোতে পারে।",
+        aboutP2: "আমরা Rahmah Institute ধরনের একটি সাজানো, মার্জিত ও structured educational model অনুসরণ করে তোমার প্রতিষ্ঠানের জন্য এই প্ল্যাটফর্ম দাঁড় করাচ্ছি।",
+        aboutP3: "এই ওয়েবসাইট বাংলা, English এবং العربية—তিন ভাষায় ব্যবহারযোগ্যভাবে সাজানো হয়েছে।",
+        feature1Title: "Qualified Teachers",
+        feature1Text: "অভিজ্ঞ, দায়িত্বশীল ও ইসলামিক পরিবেশসম্মত শিক্ষক দ্বারা পাঠদান।",
+        feature2Title: "Flexible Online Classes",
+        feature2Text: "অনলাইন ভিত্তিক হওয়ায় দেশ-বিদেশ থেকে অংশগ্রহণের সুযোগ।",
+        feature3Title: "Structured Programs",
+        feature3Text: "Quran, Hifz, Arabic, Islamic Studies ও Language Learning-এর সাজানো কাঠামো।",
+        feature4Title: "Easy Admission",
+        feature4Text: "ফর্ম, WhatsApp ও সরাসরি যোগাযোগের সহজ ব্যবস্থা।",
+        programLabel: "Our Programs",
+        programTitle: "Programs & Courses",
+        programIntro: "Quran-focused online academy model অনুসারে সাজানো কিছু গুরুত্বপূর্ণ প্রোগ্রাম।",
+        p1Title: "Quran Reading",
+        p1Sub: "তাজবিদসহ শুদ্ধ কুরআন শিক্ষা",
+        p1Desc: "মৌলিক থেকে শুদ্ধ তিলাওয়াত পর্যন্ত গাইডেড কুরআন লার্নিং।",
+        p1L1: "Noorani Qaida ভিত্তিক শুরু",
+        p1L2: "তাজবিদ গাইডেন্স",
+        p1L3: "Beginner-friendly",
+        p2Title: "Quran Memorization",
+        p2Sub: "হিফজ প্রোগ্রাম",
+        p2Desc: "শিক্ষার্থীদের জন্য ধাপে ধাপে হিফজ ও revision-based পরিকল্পনা।",
+        p2L1: "Daily memorization target",
+        p2L2: "Revision support",
+        p2L3: "Kids & adults",
+        p3Title: "Kids Quran Program",
+        p3Sub: "সন্তানের জন্য কুরআন শেখার ব্যবস্থা",
+        p3Desc: "শিশুদের জন্য সহজ, ধৈর্যশীল ও ইসলামিক আদবসম্মত পাঠদান।",
+        p3L1: "Child-friendly teaching",
+        p3L2: "Parent support",
+        p3L3: "Basic Islamic manners",
+        p4Title: "Arabic Language",
+        p4Sub: "আরবি ভাষা শিক্ষা",
+        p4Desc: "কুরআন বুঝতে ও আরবি চর্চার জন্য structured language support।",
+        p4L1: "Basic to intermediate",
+        p4L2: "Tutor support",
+        p4L3: "Reading & understanding",
+        p5Title: "Islamic Studies",
+        p5Sub: "ইসলামিক স্টাডিজ",
+        p5Desc: "আকিদা, ফিকহ, হাদিস ও প্রয়োজনীয় ইসলামিক জ্ঞানের ভিত্তিমূলক পাঠ।",
+        p5L1: "Foundational learning",
+        p5L2: "Teacher guidance",
+        p5L3: "Academic support",
+        p6Title: "English Language",
+        p6Sub: "ইংলিশ ল্যাঙ্গুয়েজ",
+        p6Desc: "মৌলিক ইংরেজি, যোগাযোগ দক্ষতা ও সহজ language support।",
+        p6L1: "Basic communication",
+        p6L2: "Speaking support",
+        p6L3: "Learner-focused guidance",
+        processLabel: "How It Works",
+        processTitle: "কীভাবে শুরু করবেন",
+        processIntro: "একজন শিক্ষার্থী বা অভিভাবক কীভাবে সহজে শুরু করতে পারে তার সংক্ষিপ্ত ধাপ।",
+        step1Title: "Choose Program",
+        step1Text: "আপনার প্রয়োজন অনুযায়ী প্রোগ্রাম নির্বাচন করুন।",
+        step2Title: "Contact / Apply",
+        step2Text: "ফর্ম পূরণ করুন অথবা WhatsApp-এ যোগাযোগ করুন।",
+        step3Title: "Guidance",
+        step3Text: "শিক্ষার্থী অনুযায়ী সময়, কোর্স ও শিক্ষক গাইডলাইন দেওয়া হবে।",
+        step4Title: "Start Learning",
+        step4Text: "অনলাইন সিস্টেমে সুন্দরভাবে ক্লাস শুরু করুন।",
+        noticeLabel: "Notice Board",
+        noticeTitle: "নোটিশ ও আপডেট",
+        noticeIntro: "প্রতিষ্ঠানের সাম্প্রতিক আপডেট, নতুন ব্যাচ ও ভর্তি তথ্য।",
+        noticeBoxTitle: "সাম্প্রতিক নোটিশ",
+        n1Title: "নতুন ভর্তি চলমান",
+        n1Text: "Quran Reading, Hifz ও Kids Quran Program-এর জন্য যোগাযোগ করুন।",
+        n2Title: "Arabic ও Islamic Studies Support",
+        n2Text: "আরবি ও ইসলামিক স্টাডিজে আগ্রহীদের জন্য সাপোর্ট ব্যবস্থা রাখা হয়েছে।",
+        n3Title: "Multilingual Website",
+        n3Text: "বাংলা, English এবং العربية—তিন ভাষায় সাইট ব্যবহারের সুযোগ।",
+        highlightTitle: "Platform Highlights",
+        highlightText: "একটি গুছানো, প্রফেশনাল ও ইসলামিক ব্যালেন্সড online education platform হিসেবে সাজানো হয়েছে।",
+        stat1: "Languages",
+        stat2: "Programs",
+        stat3: "Contact Support",
+        admissionLabel: "Admission",
+        admissionTitle: "অনলাইন আবেদন",
+        admissionIntro: "প্রথম ধাপে display-based admission form রাখা হয়েছে। পরে real submission system যোগ করা যাবে।",
+        f1: "নাম",
+        f2: "মোবাইল / WhatsApp",
+        f3: "ইমেইল",
+        f4: "প্রোগ্রাম",
+        f5: "কার জন্য",
+        f6: "সুবিধাজনক সময়",
+        f7: "অতিরিক্ত তথ্য",
+        selfOpt: "নিজের জন্য",
+        childOpt: "সন্তানের জন্য",
+        otherOpt: "অন্যান্য",
+        applyBtn: "WhatsApp-এ আবেদন করুন",
+        emailBtn: "ইমেইল করুন",
+        formNote: "নোট: চাইলে পরবর্তীতে এই ফর্ম real submission-enabled করা যাবে।",
+        ctaTitle: "আজই যোগাযোগ করুন",
+        ctaText: "কোর্স, ভর্তি বা গাইডেন্সের বিষয়ে দ্রুত সাপোর্ট পেতে WhatsApp-এ যোগাযোগ করুন।",
+        ctaBtn: "WhatsApp Now",
+        contactLabel: "Contact",
+        contactTitle: "যোগাযোগ",
+        contactIntro: "প্রতিষ্ঠানের সাথে যুক্ত হতে বা বিস্তারিত জানতে নিচের তথ্য ব্যবহার করুন।",
+        contactBox1: "প্রতিষ্ঠানের তথ্য",
+        nameLabel: "নাম:",
+        waLabel: "WhatsApp:",
+        mailLabel: "Email:",
+        langLabel: "Languages:",
+        contactBox2: "অতিরিক্ত তথ্য",
+        extra1: "Online Islamic education platform",
+        extra2: "Quran, Hifz, Arabic, Islamic Studies & English",
+        extra3: "দেশ-বিদেশ থেকে অংশগ্রহণের সুযোগ",
+        extra4: "Social links পরে যোগ করা যাবে"
+      },
+
+      en: {
+        topbarText: "Online Quran, Language and Islamic Education Platform",
+        tagline: "Your trusted companion in the journey of Quran learning and Islamic knowledge.",
+        navHome: "Home",
+        navPrograms: "Programs",
+        navAbout: "About",
+        navNotice: "Notice",
+        navContact: "Contact",
+        heroBadge: "Professional • Islamic • Online",
+        heroTitle: "An Enlightened Future Through Knowledge",
+        heroDesc: "At Al-Mustanir Education Center, Quran education, kids Quran program, Hifz, Arabic language, Islamic Studies and English language are presented in a beautiful, refined and professional way.",
+        heroBtn1: "Apply Now",
+        heroBtn2: "WhatsApp Contact",
+        heroBtn3: "View Programs",
+        heroCardTitle: "Our Core Services",
+        heroList1: "Quran Reading & Tajweed",
+        heroList2: "Quran Memorization Program",
+        heroList3: "Kids Quran Learning",
+        heroList4: "Arabic Language Support",
+        heroList5: "Islamic Studies & English Language",
+        aboutLabel: "About Us",
+        aboutTitle: "About Us",
+        aboutIntro: "Al-Mustanir Education Center is an online Islamic education platform where Quran, Arabic, Islamic Studies and essential language education are organized together.",
+        aboutP1: "Our aim is to build a trusted platform where a learner can study Quran, help their child learn Quran, join Hifz, study Arabic and English, and move forward in foundational and advanced Islamic knowledge.",
+        aboutP2: "We are shaping this platform for your institution following a refined and structured educational model inspired by Rahmah Institute.",
+        aboutP3: "This website is organized to be usable in Bangla, English and Arabic.",
+        feature1Title: "Qualified Teachers",
+        feature1Text: "Learning through experienced, responsible and Islamically appropriate teachers.",
+        feature2Title: "Flexible Online Classes",
+        feature2Text: "Online model allows participation from home and abroad.",
+        feature3Title: "Structured Programs",
+        feature3Text: "Organized structure for Quran, Hifz, Arabic, Islamic Studies and language learning.",
+        feature4Title: "Easy Admission",
+        feature4Text: "Simple admission flow through form, WhatsApp and direct contact.",
+        programLabel: "Our Programs",
+        programTitle: "Programs & Courses",
+        programIntro: "Important programs arranged according to a Quran-focused online academy model.",
+        p1Title: "Quran Reading",
+        p1Sub: "Correct Quran learning with Tajweed",
+        p1Desc: "Guided Quran learning from basics to proper recitation.",
+        p1L1: "Noorani Qaida based beginning",
+        p1L2: "Tajweed guidance",
+        p1L3: "Beginner-friendly",
+        p2Title: "Quran Memorization",
+        p2Sub: "Hifz Program",
+        p2Desc: "Step-by-step memorization with revision-based planning.",
+        p2L1: "Daily memorization target",
+        p2L2: "Revision support",
+        p2L3: "Kids & adults",
+        p3Title: "Kids Quran Program",
+        p3Sub: "Quran learning for children",
+        p3Desc: "Easy, patient and Islamically mannered instruction for children.",
+        p3L1: "Child-friendly teaching",
+        p3L2: "Parent support",
+        p3L3: "Basic Islamic manners",
+        p4Title: "Arabic Language",
+        p4Sub: "Arabic learning",
+        p4Desc: "Structured Arabic support for understanding Quran and practicing the language.",
+        p4L1: "Basic to intermediate",
+        p4L2: "Tutor support",
+        p4L3: "Reading & understanding",
+        p5Title: "Islamic Studies",
+        p5Sub: "Islamic Studies",
+        p5Desc: "Foundational learning in Aqidah, Fiqh, Hadith and necessary Islamic knowledge.",
+        p5L1: "Foundational learning",
+        p5L2: "Teacher guidance",
+        p5L3: "Academic support",
+        p6Title: "English Language",
+        p6Sub: "English language",
+        p6Desc: "Basic English, communication skill and simple language support.",
+        p6L1: "Basic communication",
+        p6L2: "Speaking support",
+        p6L3: "Learner-focused guidance",
+        processLabel: "How It Works",
+        processTitle: "How to Begin",
+        processIntro: "A simple step-by-step flow for students and parents.",
+        step1Title: "Choose Program",
+        step1Text: "Select the program that fits your need.",
+        step2Title: "Contact / Apply",
+        step2Text: "Fill the form or contact us on WhatsApp.",
+        step3Title: "Guidance",
+        step3Text: "You will receive guidance on course, timing and learning path.",
+        step4Title: "Start Learning",
+        step4Text: "Start your classes beautifully through the online system.",
+        noticeLabel: "Notice Board",
+        noticeTitle: "Notices & Updates",
+        noticeIntro: "Recent updates, new batches and admission information.",
+        noticeBoxTitle: "Recent Notices",
+        n1Title: "New Admission Open",
+        n1Text: "Contact us for Quran Reading, Hifz and Kids Quran Program.",
+        n2Title: "Arabic and Islamic Studies Support",
+        n2Text: "Support is available for students interested in Arabic and Islamic Studies.",
+        n3Title: "Multilingual Website",
+        n3Text: "The website can be used in Bangla, English and Arabic.",
+        highlightTitle: "Platform Highlights",
+        highlightText: "Organized as a refined, professional and balanced Islamic online education platform.",
+        stat1: "Languages",
+        stat2: "Programs",
+        stat3: "Contact Support",
+        admissionLabel: "Admission",
+        admissionTitle: "Online Admission",
+        admissionIntro: "A display-based admission form is included in the first stage. Later it can be upgraded to a real submission system.",
+        f1: "Name",
+        f2: "Mobile / WhatsApp",
+        f3: "Email",
+        f4: "Program",
+        f5: "For Whom",
+        f6: "Preferred Time",
+        f7: "Additional Information",
+        selfOpt: "For myself",
+        childOpt: "For my child",
+        otherOpt: "Other",
+        applyBtn: "Apply on WhatsApp",
+        emailBtn: "Send Email",
+        formNote: "Note: This form can later be made submission-enabled.",
+        ctaTitle: "Contact Us Today",
+        ctaText: "For course, admission or guidance support, contact us quickly on WhatsApp.",
+        ctaBtn: "WhatsApp Now",
+        contactLabel: "Contact",
+        contactTitle: "Contact",
+        contactIntro: "Use the following details to connect with the institution.",
+        contactBox1: "Institution Information",
+        nameLabel: "Name:",
+        waLabel: "WhatsApp:",
+        mailLabel: "Email:",
+        langLabel: "Languages:",
+        contactBox2: "Additional Info",
+        extra1: "Online Islamic education platform",
+        extra2: "Quran, Hifz, Arabic, Islamic Studies & English",
+        extra3: "Participation available from home and abroad",
+        extra4: "Social links can be added later"
+      },
+
+      ar: {
+        topbarText: "منصة تعليمية للقرآن واللغات والدراسات الإسلامية عبر الإنترنت",
+        tagline: "رفيقكم الموثوق في رحلة تعلم القرآن واكتساب المعرفة الإسلامية.",
+        navHome: "الرئيسية",
+        navPrograms: "البرامج",
+        navAbout: "من نحن",
+        navNotice: "الإعلانات",
+        navContact: "اتصل بنا",
+        heroBadge: "احترافي • إسلامي • عبر الإنترنت",
+        heroTitle: "مستقبل مضيء بنور المعرفة",
+        heroDesc: "في Al-Mustanir Education Center يتم تقديم تعليم القرآن، وبرنامج الأطفال، والحفظ، واللغة العربية، والدراسات الإسلامية، واللغة الإنجليزية بطريقة جميلة وراقية واحترافية.",
+        heroBtn1: "قدّم الآن",
+        heroBtn2: "تواصل عبر واتساب",
+        heroBtn3: "عرض البرامج",
+        heroCardTitle: "خدماتنا الأساسية",
+        heroList1: "قراءة القرآن والتجويد",
+        heroList2: "برنامج حفظ القرآن",
+        heroList3: "تعليم القرآن للأطفال",
+        heroList4: "دعم اللغة العربية",
+        heroList5: "الدراسات الإسلامية واللغة الإنجليزية",
+        aboutLabel: "من نحن",
+        aboutTitle: "عن المؤسسة",
+        aboutIntro: "Al-Mustanir Education Center منصة تعليمية إسلامية عبر الإنترنت تجمع بين القرآن والعربية والدراسات الإسلامية وتعليم اللغات الأساسية.",
+        aboutP1: "هدفنا هو بناء منصة موثوقة يستطيع من خلالها الطالب تعلم القرآن، وتعليم أطفاله القرآن، والانضمام إلى برنامج الحفظ، وتعلم العربية والإنجليزية، والتقدم في المعرفة الإسلامية الأساسية والمتقدمة.",
+        aboutP2: "نقوم ببناء هذه المنصة لمؤسستكم وفق نموذج تعليمي منظم وراقي مستوحى من Rahmah Institute.",
+        aboutP3: "تم تنظيم هذا الموقع ليكون قابلاً للاستخدام بالبنغالية والإنجليزية والعربية.",
+        feature1Title: "معلمون مؤهلون",
+        feature1Text: "تعليم بإشراف معلمين ذوي خبرة ومسؤولية ومراعاة للبيئة الإسلامية.",
+        feature2Title: "دروس مرنة عبر الإنترنت",
+        feature2Text: "النظام عبر الإنترنت يتيح المشاركة من الداخل والخارج.",
+        feature3Title: "برامج منظمة",
+        feature3Text: "هيكل منظم للقرآن والحفظ والعربية والدراسات الإسلامية وتعليم اللغات.",
+        feature4Title: "قبول سهل",
+        feature4Text: "إجراءات سهلة عبر النموذج وواتساب والتواصل المباشر.",
+        programLabel: "برامجنا",
+        programTitle: "البرامج والدورات",
+        programIntro: "برامج مهمة مرتبة وفق نموذج أكاديمية قرآنية عبر الإنترنت.",
+        p1Title: "قراءة القرآن",
+        p1Sub: "تعلم القرآن بالتجويد الصحيح",
+        p1Desc: "تعلم موجّه للقرآن من الأساسيات إلى التلاوة الصحيحة.",
+        p1L1: "بداية مع القاعدة النورانية",
+        p1L2: "توجيه في التجويد",
+        p1L3: "مناسب للمبتدئين",
+        p2Title: "حفظ القرآن",
+        p2Sub: "برنامج الحفظ",
+        p2Desc: "حفظ تدريجي مع خطة مراجعة منظمة.",
+        p2L1: "هدف حفظ يومي",
+        p2L2: "دعم المراجعة",
+        p2L3: "للأطفال والكبار",
+        p3Title: "برنامج القرآن للأطفال",
+        p3Sub: "تعليم القرآن للأطفال",
+        p3Desc: "تعليم سهل وصبور ومناسب للأطفال مع مراعاة الآداب الإسلامية.",
+        p3L1: "أسلوب مناسب للأطفال",
+        p3L2: "دعم للأهل",
+        p3L3: "آداب إسلامية أساسية",
+        p4Title: "اللغة العربية",
+        p4Sub: "تعلم العربية",
+        p4Desc: "دعم منظم للغة العربية لفهم القرآن وممارسة اللغة.",
+        p4L1: "من الأساسي إلى المتوسط",
+        p4L2: "دعم من معلم",
+        p4L3: "القراءة والفهم",
+        p5Title: "الدراسات الإسلامية",
+        p5Sub: "الدراسات الإسلامية",
+        p5Desc: "تعلم أساسي في العقيدة والفقه والحديث والمعرفة الإسلامية اللازمة.",
+        p5L1: "تعلم تأسيسي",
+        p5L2: "إرشاد من المعلم",
+        p5L3: "دعم أكاديمي",
+        p6Title: "اللغة الإنجليزية",
+        p6Sub: "اللغة الإنجليزية",
+        p6Desc: "الإنجليزية الأساسية ومهارات التواصل ودعم لغوي بسيط.",
+        p6L1: "تواصل أساسي",
+        p6L2: "دعم المحادثة",
+        p6L3: "إرشاد يراعي مستوى المتعلم",
+        processLabel: "كيف يعمل",
+        processTitle: "كيف تبدأ",
+        processIntro: "خطوات بسيطة للطلاب وأولياء الأمور للبدء بسهولة.",
+        step1Title: "اختر البرنامج",
+        step1Text: "اختر البرنامج المناسب لاحتياجك.",
+        step2Title: "تواصل / قدّم",
+        step2Text: "املأ النموذج أو تواصل عبر واتساب.",
+        step3Title: "الإرشاد",
+        step3Text: "ستتلقى توجيهاً مناسباً للمسار والوقت والبرنامج.",
+        step4Title: "ابدأ التعلم",
+        step4Text: "ابدأ دروسك عبر النظام الإلكتروني بشكل منظم.",
+        noticeLabel: "لوحة الإعلانات",
+        noticeTitle: "الإعلانات والتحديثات",
+        noticeIntro: "آخر التحديثات والدفعات الجديدة ومعلومات القبول.",
+        noticeBoxTitle: "أحدث الإعلانات",
+        n1Title: "فتح التسجيل الجديد",
+        n1Text: "تواصل معنا لبرامج قراءة القرآن والحفظ وبرنامج الأطفال.",
+        n2Title: "دعم العربية والدراسات الإسلامية",
+        n2Text: "يتوفر دعم للمهتمين باللغة العربية والدراسات الإسلامية.",
+        n3Title: "موقع متعدد اللغات",
+        n3Text: "يمكن استخدام الموقع بالبنغالية والإنجليزية والعربية.",
+        highlightTitle: "مميزات المنصة",
+        highlightText: "تم تنظيمها كمنصة تعليمية إسلامية احترافية ومتوازنة عبر الإنترنت.",
+        stat1: "اللغات",
+        stat2: "البرامج",
+        stat3: "دعم التواصل",
+        admissionLabel: "القبول",
+        admissionTitle: "التقديم الإلكتروني",
+        admissionIntro: "تم تضمين نموذج عرض مبدئي للقبول، ويمكن لاحقاً تطويره إلى نظام إرسال فعلي.",
+        f1: "الاسم",
+        f2: "الهاتف / واتساب",
+        f3: "البريد الإلكتروني",
+        f4: "البرنامج",
+        f5: "لمن",
+        f6: "الوقت المناسب",
+        f7: "معلومات إضافية",
+        selfOpt: "لنفسي",
+        childOpt: "لطفلي",
+        otherOpt: "أخرى",
+        applyBtn: "قدّم عبر واتساب",
+        emailBtn: "أرسل بريداً",
+        formNote: "ملاحظة: يمكن لاحقاً تفعيل هذا النموذج للإرسال المباشر.",
+        ctaTitle: "تواصل معنا اليوم",
+        ctaText: "للحصول على دعم سريع بخصوص الدورات أو القبول أو الإرشاد، تواصل معنا عبر واتساب.",
+        ctaBtn: "واتساب الآن",
+        contactLabel: "اتصل بنا",
+        contactTitle: "التواصل",
+        contactIntro: "استخدم المعلومات التالية للتواصل مع المؤسسة.",
+        contactBox1: "معلومات المؤسسة",
+        nameLabel: "الاسم:",
+        waLabel: "واتساب:",
+        mailLabel: "البريد:",
+        langLabel: "اللغات:",
+        contactBox2: "معلومات إضافية",
+        extra1: "منصة تعليمية إسلامية عبر الإنترنت",
+        extra2: "القرآن، الحفظ، العربية، الدراسات الإسلامية والإنجليزية",
+        extra3: "إمكانية المشاركة من الداخل والخارج",
+        extra4: "يمكن إضافة الروابط الاجتماعية لاحقاً"
+      }
+    };
+
+    function setLang(lang){
+      document.documentElement.lang = lang;
+      document.body.style.direction = lang === 'ar' ? 'rtl' : 'ltr';
+      document.body.style.textAlign = lang === 'ar' ? 'right' : 'left';
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if(translations[lang] && translations[lang][key]){
+          el.textContent = translations[lang][key];
+        }
+      });
+
+      document.querySelectorAll('.lang-switch button').forEach(btn => btn.classList.remove('active'));
+      if(lang === 'bn') document.querySelectorAll('.lang-switch button')[0].classList.add('active');
+      if(lang === 'en') document.querySelectorAll('.lang-switch button')[1].classList.add('active');
+      if(lang === 'ar') document.querySelectorAll('.lang-switch button')[2].classList.add('active');
+    }
+  </script>
 </body>
-  </html>
+          </html>
