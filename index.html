@@ -1,17 +1,851 @@
 <!DOCTYPE html>
-<html>
+<html lang="bn">
 <head>
-<title>Al Mustanir Education Centre</title>
-</head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Al Mustanir Education Centre</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f6f1;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #0f3d2e;
+      color: white;
+      padding: 18px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 15px;
+    }
+
+    .hero {
+      background: linear-gradient(rgba(15,61,46,.85), rgba(20,83,45,.78)),
+        url('https://images.unsplash.com/photo-1519817650390-64a93db511aa?auto=format&fit=crop&w=1400&q=80') center/cover;
+      color: white;
+      text-align: center;
+      padding: 90px 20px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      max-width: 780px;
+      margin: auto;
+      font-size: 18px;
+    }
+
+    .btn-group {
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 22px;
+      margin: 8px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .btn-primary {
+      background: #facc15;
+      color: #111827;
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #0f3d2e;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 32px;
+      color: #0f3d2e;
+    }
+
+    .about p,
+    .fees p,
+    .contact p {
+      max-width: 850px;
+      margin: 10px auto;
+      text-align: center;
+      font-size: 17px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+      margin-top: 25px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 22px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.08);
+    }
+
+    .card h3 {
+      color: #0f3d2e;
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .features {
+      background: #ecfdf5;
+      border-radius: 14px;
+      padding: 30px;
+    }
+
+    .features ul {
+      max-width: 800px;
+      margin: auto;
+      padding-left: 20px;
+    }
+
+    .features li {
+      margin: 12px 0;
+      font-size: 17px;
+    }
+
+    form {
+      background: white;
+      border-radius: 14px;
+      padding: 25px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.08);
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 15px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      margin-top: 6px;
+      font-size: 15px;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    label {
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .submit-btn {
+      background: #0f3d2e;
+      color: white;
+      border: none;
+      padding: 13px 20px;
+      border-radius: 8px;
+      margin-top: 18px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .faq-item {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 14px 0;
+      box-shadow: 0 4px 16px rgba(0,0,0,.07);
+    }
+
+    .faq-item h4 {
+      color: #0f3d2e;
+      margin-bottom: 8px;
+    }
+
+    footer {
+      background: #0f3d2e;
+      color: white;
+      text-align: center;
+      padding: 25px 20px;
+      margin-top: 30px;
+    }
+
+    .small-note {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+      color: #6b7280;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 30px;
+      }
+
+      .nav-links {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .nav-links a {
+        display: inline-block;
+        margin: 6px 8px;
+      }
+    }
+  </style>
+</head>
 <body>
 
-<h1>Al Mustanir Education Centre</h1>
+  <header>
+    <nav>
+      <div class="logo">Al Mustanir Education Centre</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#courses">Courses</a>
+        <a href="#admission">Admission</a>
+        <a href="#fees">Hadiya</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
 
-<p>Welcome to our Islamic Educational Website.</p>
+  <section class="hero">
+    <h1>ইসলামী জ্ঞান, আদব ও সুশিক্ষার অনলাইন প্ল্যাটফর্ম</h1>
+    <p>
+      Al Mustanir Education Centre এ কুরআন, তাজবিদ, আরবি ভাষা, আকিদা, ফিকহ, হাদিস
+      ও ইসলামিক স্টাডিজ শালীন, ভারসাম্যপূর্ণ ও সহজ পদ্ধতিতে শেখানো হবে।
+    </p>
+    <div class="btn-group">
+      <a class="btn btn-primary" href="#admission">এখনই আবেদন করুন</a>
+      <a class="btn btn-secondary" href="https://wa.me/8801000000000" target="_blank">WhatsApp যোগাযোগ</a>
+    </div>
+  </section>
 
-<p>Online Quran, Arabic, Aqidah, Fiqh and Islamic Studies.</p>
+  <section id="about" class="about">
+    <h2 class="section-title">আমাদের সম্পর্কে</h2>
+    <p>
+      Al Mustanir Education Centre একটি ইসলামিক অনলাইন শিক্ষা প্রতিষ্ঠান, যেখানে
+      দ্বীনি জ্ঞানের সাথে আদব, চরিত্র গঠন এবং বাস্তব জীবনে ইসলামের চর্চার উপর গুরুত্ব দেওয়া হয়।
+    </p>
+    <p>
+      শিশু, কিশোর, প্রাপ্তবয়স্ক এবং বিভিন্ন স্তরের শিক্ষার্থীদের জন্য উপযোগী কোর্স
+      ধীরে ধীরে যুক্ত করা হবে।
+    </p>
+  </section>
+
+  <section class="features">
+    <h2 class="section-title">কেন আমাদের বেছে নেবেন</h2>
+    <ul>
+      <li>ইসলামী ভারসাম্যপূর্ণ ও শালীন শিক্ষার পরিবেশ</li>
+      <li>কুরআন, তাজবিদ, আরবি, আকিদা, ফিকহ, হাদিসসহ বিভিন্ন বিষয়</li>
+      <li>অনলাইন আবেদন ও সহজ যোগাযোগ ব্যবস্থা</li>
+      <li>WhatsApp-এর মাধ্যমে দ্রুত সাপোর্ট</li>
+      <li>শিশু ও বড়দের জন্য উপযোগী কোর্স পরিকল্পনা</li>
+      <li>পরবর্তীতে বহু ভাষায় কনটেন্ট দেখানোর সুবিধা যোগ করা যাবে</li>
+    </ul>
+  </section>
+
+  <section id="courses">
+    <h2 class="section-title">কোর্সসমূহ</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>কুরআন তিলাওয়াত ও তাজবিদ</h3>
+        <p>সঠিক মাখরাজ, তাজবিদ ও তিলাওয়াতের ভিত্তিমূলক ও উন্নত পাঠ।</p>
+      </div>
+      <div class="card">
+        <h3>হিফজ ও নাজেরা</h3>
+        <p>শিশু ও বড়দের জন্য হিফজ এবং নাজেরা ভিত্তিক প্রোগ্রাম।</p>
+      </div>
+      <div class="card">
+        <h3>আরবি ভাষা শিক্ষা</h3>
+        <p>কুরআন ও ইসলামি গ্রন্থ বুঝতে আরবি ভাষার ধাপে ধাপে শিক্ষা।</p>
+      </div>
+      <div class="card">
+        <h3>আকিদা, ফিকহ ও হাদিস</h3>
+        <p>মৌলিক দ্বীনি জ্ঞান ও জীবনঘনিষ্ঠ ইসলামিক শিক্ষার কোর্স।</p>
+      </div>
+      <div class="card">
+        <h3>ইসলামিক স্টাডিজ ফর কিডস</h3>
+        <p>শিশুদের জন্য দোআ, আদব, নামাজ, ছোট সূরা ও নৈতিক শিক্ষা।</p>
+      </div>
+      <div class="card">
+        <h3>বিশেষ ব্যাচ</h3>
+        <p>নারী, পুরুষ বা নির্দিষ্ট বয়সভিত্তিক ব্যাচের ব্যবস্থা পরবর্তীতে যোগ করা যাবে।</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="admission">
+    <h2 class="section-title">অনলাইন ভর্তি ফরম</h2>
+    <form>
+      <div class="form-grid">
+        <div>
+          <label>শিক্ষার্থীর নাম</label>
+          <input type="text" placeholder="আপনার নাম লিখুন">
+        </div>
+        <div>
+          <label>বয়স</label>
+          <input type="text" placeholder="বয়স লিখুন">
+        </div>
+        <div>
+          <label>মোবাইল নাম্বার</label>
+          <input type="text" placeholder="01XXXXXXXXX">
+        </div>
+        <div>
+          <label>WhatsApp নাম্বার</label>
+          <input type="text" placeholder="01XXXXXXXXX">
+        </div>
+        <div>
+          <label>কোর্স নির্বাচন</label>
+          <select>
+            <option>কুরআন তিলাওয়াত ও তাজবিদ</option>
+            <option>হিফজ ও নাজেরা</option>
+            <option>আরবি ভাষা শিক্ষা</option>
+            <option>আকিদা, ফিকহ ও হাদিস</option>
+            <option>ইসলামিক স্টাডিজ ফর কিডস</option>
+          </select>
+        </div>
+        <div>
+          <label>সুবিধাজনক সময়</label>
+          <input type="text" placeholder="সকাল / বিকাল / রাত">
+        </div>
+      </div>
+
+      <div style="margin-top:15px;">
+        <label>অতিরিক্ত তথ্য</label>
+        <textarea placeholder="আপনার সম্পর্কে বা কোর্সের প্রয়োজন লিখুন"></textarea>
+      </div>
+
+      <button type="button" class="submit-btn">Submit Application</button>
+      <p class="small-note">নোট: এই ফর্ম এখন display purposes-এর জন্য। পরে চাইলে real submission system যোগ করা যাবে।</p>
+    </form>
+  </section>
+
+  <section id="fees" class="fees">
+    <h2 class="section-title">হাদিয়া / ফি</h2>
+    <p>
+      কোর্স, ক্লাসের ধরন, সময় ও ব্যাচ অনুযায়ী হাদিয়া নির্ধারণ করা হবে।
+    </p>
+    <p>
+      বিস্তারিত জানতে WhatsApp-এ যোগাযোগ করুন।
+    </p>
+    <p style="margin-top:20px;">
+      <a class="btn btn-primary" href="https://wa.me/8801000000000" target="_blank">হাদিয়া জানতে WhatsApp করুন</a>
+    </p>
+  </section>
+
+  <section id="faq">
+    <h2 class="section-title">সাধারণ জিজ্ঞাসা</h2>
+
+    <div class="faq-item">
+      <h4>কীভাবে ভর্তি হব?</h4>
+      <p>ওয়েবসাইটের আবেদন ফরম পূরণ করুন অথবা WhatsApp-এ যোগাযোগ করুন।</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>বিদেশ থেকে ভর্তি হওয়া যাবে?</h4>
+      <p>জি, অনলাইন প্ল্যাটফর্ম হওয়ায় দেশ-বিদেশ থেকে ভর্তি সম্ভব।</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>হাদিয়া কীভাবে নির্ধারণ হবে?</h4>
+      <p>কোর্স, সময় ও ব্যাচ অনুযায়ী আলোচনা সাপেক্ষে নির্ধারণ করা হবে।</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>সব বয়সের শিক্ষার্থী ভর্তি হতে পারবে?</h4>
+      <p>জি, শিশু থেকে প্রাপ্তবয়স্ক—সবার জন্য উপযোগী কোর্স রাখা হবে।</p>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2 class="section-title">যোগাযোগ</h2>
+    <p><strong>প্রতিষ্ঠানের নাম:</strong> Al Mustanir Education Centre</p>
+    <p><strong>WhatsApp:</strong> +8801000000000</p>
+    <p><strong>Email:</strong> info@almustanir.com</p>
+    <p><strong>Class Mode:</strong> Online</p>
+    <p style="margin-top:20px;">
+      <a class="btn btn-primary" href="https://wa.me/8801000000000" target="_blank">এখনই যোগাযোগ করুন</a>
+    </p>
+  </section>
+
+  <footer>
+    <p>© 2026 Al Mustanir Education Centre | All Rights Reserved</p>
+  </footer>
 
 </body>
+</html><!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Al Mustanir Education Centre</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
-</html>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f6f1;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #0f3d2e;
+      color: white;
+      padding: 18px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 15px;
+    }
+
+    .hero {
+      background: linear-gradient(rgba(15,61,46,.85), rgba(20,83,45,.78)),
+        url('https://images.unsplash.com/photo-1519817650390-64a93db511aa?auto=format&fit=crop&w=1400&q=80') center/cover;
+      color: white;
+      text-align: center;
+      padding: 90px 20px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      max-width: 780px;
+      margin: auto;
+      font-size: 18px;
+    }
+
+    .btn-group {
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 22px;
+      margin: 8px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .btn-primary {
+      background: #facc15;
+      color: #111827;
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #0f3d2e;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 32px;
+      color: #0f3d2e;
+    }
+
+    .about p,
+    .fees p,
+    .contact p {
+      max-width: 850px;
+      margin: 10px auto;
+      text-align: center;
+      font-size: 17px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+      margin-top: 25px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 22px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.08);
+    }
+
+    .card h3 {
+      color: #0f3d2e;
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .features {
+      background: #ecfdf5;
+      border-radius: 14px;
+      padding: 30px;
+    }
+
+    .features ul {
+      max-width: 800px;
+      margin: auto;
+      padding-left: 20px;
+    }
+
+    .features li {
+      margin: 12px 0;
+      font-size: 17px;
+    }
+
+    form {
+      background: white;
+      border-radius: 14px;
+      padding: 25px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.08);
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 15px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      margin-top: 6px;
+      font-size: 15px;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    label {
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .submit-btn {
+      background: #0f3d2e;
+      color: white;
+      border: none;
+      padding: 13px 20px;
+      border-radius: 8px;
+      margin-top: 18px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .faq-item {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 14px 0;
+      box-shadow: 0 4px 16px rgba(0,0,0,.07);
+    }
+
+    .faq-item h4 {
+      color: #0f3d2e;
+      margin-bottom: 8px;
+    }
+
+    footer {
+      background: #0f3d2e;
+      color: white;
+      text-align: center;
+      padding: 25px 20px;
+      margin-top: 30px;
+    }
+
+    .small-note {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+      color: #6b7280;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 30px;
+      }
+
+      .nav-links {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .nav-links a {
+        display: inline-block;
+        margin: 6px 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">Al Mustanir Education Centre</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#courses">Courses</a>
+        <a href="#admission">Admission</a>
+        <a href="#fees">Hadiya</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>ইসলামী জ্ঞান, আদব ও সুশিক্ষার অনলাইন প্ল্যাটফর্ম</h1>
+    <p>
+      Al Mustanir Education Centre এ কুরআন, তাজবিদ, আরবি ভাষা, আকিদা, ফিকহ, হাদিস
+      ও ইসলামিক স্টাডিজ শালীন, ভারসাম্যপূর্ণ ও সহজ পদ্ধতিতে শেখানো হবে।
+    </p>
+    <div class="btn-group">
+      <a class="btn btn-primary" href="#admission">এখনই আবেদন করুন</a>
+      <a class="btn btn-secondary" href="https://wa.me/8801000000000" target="_blank">WhatsApp যোগাযোগ</a>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <h2 class="section-title">আমাদের সম্পর্কে</h2>
+    <p>
+      Al Mustanir Education Centre একটি ইসলামিক অনলাইন শিক্ষা প্রতিষ্ঠান, যেখানে
+      দ্বীনি জ্ঞানের সাথে আদব, চরিত্র গঠন এবং বাস্তব জীবনে ইসলামের চর্চার উপর গুরুত্ব দেওয়া হয়।
+    </p>
+    <p>
+      শিশু, কিশোর, প্রাপ্তবয়স্ক এবং বিভিন্ন স্তরের শিক্ষার্থীদের জন্য উপযোগী কোর্স
+      ধীরে ধীরে যুক্ত করা হবে।
+    </p>
+  </section>
+
+  <section class="features">
+    <h2 class="section-title">কেন আমাদের বেছে নেবেন</h2>
+    <ul>
+      <li>ইসলামী ভারসাম্যপূর্ণ ও শালীন শিক্ষার পরিবেশ</li>
+      <li>কুরআন, তাজবিদ, আরবি, আকিদা, ফিকহ, হাদিসসহ বিভিন্ন বিষয়</li>
+      <li>অনলাইন আবেদন ও সহজ যোগাযোগ ব্যবস্থা</li>
+      <li>WhatsApp-এর মাধ্যমে দ্রুত সাপোর্ট</li>
+      <li>শিশু ও বড়দের জন্য উপযোগী কোর্স পরিকল্পনা</li>
+      <li>পরবর্তীতে বহু ভাষায় কনটেন্ট দেখানোর সুবিধা যোগ করা যাবে</li>
+    </ul>
+  </section>
+
+  <section id="courses">
+    <h2 class="section-title">কোর্সসমূহ</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>কুরআন তিলাওয়াত ও তাজবিদ</h3>
+        <p>সঠিক মাখরাজ, তাজবিদ ও তিলাওয়াতের ভিত্তিমূলক ও উন্নত পাঠ।</p>
+      </div>
+      <div class="card">
+        <h3>হিফজ ও নাজেরা</h3>
+        <p>শিশু ও বড়দের জন্য হিফজ এবং নাজেরা ভিত্তিক প্রোগ্রাম।</p>
+      </div>
+      <div class="card">
+        <h3>আরবি ভাষা শিক্ষা</h3>
+        <p>কুরআন ও ইসলামি গ্রন্থ বুঝতে আরবি ভাষার ধাপে ধাপে শিক্ষা।</p>
+      </div>
+      <div class="card">
+        <h3>আকিদা, ফিকহ ও হাদিস</h3>
+        <p>মৌলিক দ্বীনি জ্ঞান ও জীবনঘনিষ্ঠ ইসলামিক শিক্ষার কোর্স।</p>
+      </div>
+      <div class="card">
+        <h3>ইসলামিক স্টাডিজ ফর কিডস</h3>
+        <p>শিশুদের জন্য দোআ, আদব, নামাজ, ছোট সূরা ও নৈতিক শিক্ষা।</p>
+      </div>
+      <div class="card">
+        <h3>বিশেষ ব্যাচ</h3>
+        <p>নারী, পুরুষ বা নির্দিষ্ট বয়সভিত্তিক ব্যাচের ব্যবস্থা পরবর্তীতে যোগ করা যাবে।</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="admission">
+    <h2 class="section-title">অনলাইন ভর্তি ফরম</h2>
+    <form>
+      <div class="form-grid">
+        <div>
+          <label>শিক্ষার্থীর নাম</label>
+          <input type="text" placeholder="আপনার নাম লিখুন">
+        </div>
+        <div>
+          <label>বয়স</label>
+          <input type="text" placeholder="বয়স লিখুন">
+        </div>
+        <div>
+          <label>মোবাইল নাম্বার</label>
+          <input type="text" placeholder="01XXXXXXXXX">
+        </div>
+        <div>
+          <label>WhatsApp নাম্বার</label>
+          <input type="text" placeholder="01XXXXXXXXX">
+        </div>
+        <div>
+          <label>কোর্স নির্বাচন</label>
+          <select>
+            <option>কুরআন তিলাওয়াত ও তাজবিদ</option>
+            <option>হিফজ ও নাজেরা</option>
+            <option>আরবি ভাষা শিক্ষা</option>
+            <option>আকিদা, ফিকহ ও হাদিস</option>
+            <option>ইসলামিক স্টাডিজ ফর কিডস</option>
+          </select>
+        </div>
+        <div>
+          <label>সুবিধাজনক সময়</label>
+          <input type="text" placeholder="সকাল / বিকাল / রাত">
+        </div>
+      </div>
+
+      <div style="margin-top:15px;">
+        <label>অতিরিক্ত তথ্য</label>
+        <textarea placeholder="আপনার সম্পর্কে বা কোর্সের প্রয়োজন লিখুন"></textarea>
+      </div>
+
+      <button type="button" class="submit-btn">Submit Application</button>
+      <p class="small-note">নোট: এই ফর্ম এখন display purposes-এর জন্য। পরে চাইলে real submission system যোগ করা যাবে।</p>
+    </form>
+  </section>
+
+  <section id="fees" class="fees">
+    <h2 class="section-title">হাদিয়া / ফি</h2>
+    <p>
+      কোর্স, ক্লাসের ধরন, সময় ও ব্যাচ অনুযায়ী হাদিয়া নির্ধারণ করা হবে।
+    </p>
+    <p>
+      বিস্তারিত জানতে WhatsApp-এ যোগাযোগ করুন।
+    </p>
+    <p style="margin-top:20px;">
+      <a class="btn btn-primary" href="https://wa.me/8801000000000" target="_blank">হাদিয়া জানতে WhatsApp করুন</a>
+    </p>
+  </section>
+
+  <section id="faq">
+    <h2 class="section-title">সাধারণ জিজ্ঞাসা</h2>
+
+    <div class="faq-item">
+      <h4>কীভাবে ভর্তি হব?</h4>
+      <p>ওয়েবসাইটের আবেদন ফরম পূরণ করুন অথবা WhatsApp-এ যোগাযোগ করুন।</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>বিদেশ থেকে ভর্তি হওয়া যাবে?</h4>
+      <p>জি, অনলাইন প্ল্যাটফর্ম হওয়ায় দেশ-বিদেশ থেকে ভর্তি সম্ভব।</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>হাদিয়া কীভাবে নির্ধারণ হবে?</h4>
+      <p>কোর্স, সময় ও ব্যাচ অনুযায়ী আলোচনা সাপেক্ষে নির্ধারণ করা হবে।</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>সব বয়সের শিক্ষার্থী ভর্তি হতে পারবে?</h4>
+      <p>জি, শিশু থেকে প্রাপ্তবয়স্ক—সবার জন্য উপযোগী কোর্স রাখা হবে।</p>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2 class="section-title">যোগাযোগ</h2>
+    <p><strong>প্রতিষ্ঠানের নাম:</strong> Al Mustanir Education Centre</p>
+    <p><strong>WhatsApp:</strong> +8801000000000</p>
+    <p><strong>Email:</strong> info@almustanir.com</p>
+    <p><strong>Class Mode:</strong> Online</p>
+    <p style="margin-top:20px;">
+      <a class="btn btn-primary" href="https://wa.me/8801000000000" target="_blank">এখনই যোগাযোগ করুন</a>
+    </p>
+  </section>
+
+  <footer>
+    <p>© 2026 Al Mustanir Education Centre | All Rights Reserved</p>
+  </footer>
+
+</body>
+  </html>
