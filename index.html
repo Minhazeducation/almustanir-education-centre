@@ -1,178 +1,58 @@
-        <!DOCTYPE html>
-<html lang="bn">
+<!DOCTYPE html>
+<html lang="bn" id="html-tag">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Al Mustanir Education Centre | مركز المستنير التعليمي</title>
+  <title>Al Mustanir Education Centre | مركز المستنير | Online Quran & Arabic</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Hind Siliguri', sans-serif; }
     .arabic { font-family: 'Amiri', serif; }
+    .english { font-family: 'Poppins', sans-serif; }
     .tab-active { border-bottom: 2px solid #1A5D1A; color: #1A5D1A; }
+    [dir="rtl"] { text-align: right; }
   </style>
 </head>
 <body class="bg-white text-gray-800">
 
-  <!-- বিসমিল্লাহ + হিজরি তারিখ -->
-  <div class="bg-[#1A5D1A] text-white text-center py-1.5 text-sm">
-    <span class="arabic text-base">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</span>
-    <span class="mx-4">|</span>
-    <span id="hijri-date"></span>
+  <!-- টপ বার: বিসমিল্লাহ + হিজরি + ভাষা -->
+  <div class="bg-[#1A5D1A] text-white py-1.5 text-sm">
+    <div class="container mx-auto px-6 flex justify-between items-center">
+      <div>
+        <span class="arabic text-base">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</span>
+        <span class="mx-4 hidden md:inline">|</span>
+        <span id="hijri-date" class="hidden md:inline">লোড হচ্ছে...</span>
+      </div>
+      <div class="flex gap-3">
+        <button onclick="changeLang('bn')" id="lang-bn" class="font-semibold underline">বাংলা</button>
+        <button onclick="changeLang('ar')" id="lang-ar" class="hover:underline">العربية</button>
+        <button onclick="changeLang('en')" id="lang-en" class="hover:underline">English</button>
+      </div>
+    </div>
   </div>
 
-  <!-- হেডার - Rahmah মিনিমাল -->
+  <!-- হেডার -->
   <header class="bg-white border-b border-gray-100 sticky top-0 z-50">
     <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
       <div class="flex items-center gap-3">
         <img src="logo.png" alt="Al Mustanir Logo" class="h-10 md:h-12 w-auto">
         <div>
-          <h1 class="text-xl md:text-2xl font-semibold text-[#1A5D1A]">Al Mustanir Education Centre</h1>
-          <p class="text-xs text-gray-500 arabic">مركز المستنير للتعليم الإسلامي</p>
+          <h1 class="text-xl md:text-2xl font-semibold text-[#1A5D1A]" data-bn="Al Mustanir Education Centre" data-ar="مركز المستنير التعليمي" data-en="Al Mustanir Education Centre">Al Mustanir Education Centre</h1>
+          <p class="text-xs text-gray-500" data-bn="কুরআন ও আরবি শিক্ষার বিশ্বস্ত সঙ্গী" data-ar="رفيقك الموثوق في تعلم القرآن والعربية" data-en="Your Trusted Partner in Quran & Arabic">কুরআন ও আরবি শিক্ষার বিশ্বস্ত সঙ্গী</p>
         </div>
       <div class="hidden md:flex space-x-8 text-gray-700">
-        <a href="#about" class="hover:text-[#1A5D1A]">পরিচিতি</a>
-        <a href="#programs" class="hover:text-[#1A5D1A]">প্রোগ্রাম</a>
-        <a href="#feature" class="hover:text-[#1A5D1A]">বৈশিষ্ট্য</a>
-        <a href="#contact" class="hover:text-[#1A5D1A]">যোগাযোগ</a>
+        <a href="#services" class="hover:text-[#1A5D1A]" data-bn="সেবাসমূহ" data-ar="خدماتنا" data-en="Services">সেবাসমূহ</a>
+        <a href="#teachers" class="hover:text-[#1A5D1A]" data-bn="উস্তাদবৃন্দ" data-ar="المعلمون" data-en="Teachers">উস্তাদবৃন্দ</a>
+        <a href="#contact" class="hover:text-[#1A5D1A]" data-bn="যোগাযোগ" data-ar="اتصل بنا" data-en="Contact">যোগাযোগ</a>
       </div>
-      <a href="#admission" class="bg-[#1A5D1A] text-white px-6 py-2 rounded-md font-medium hover:bg-opacity-90 text-sm">ভর্তি আবেদন</a>
+      <a href="https://wa.me/8801614917650?text=আসসালামু%20আলাইকুম%2C%20কুরআন%20শিক্ষার%20ব্যাপারে%20জানতে%20চাই" target="_blank" class="bg-[#1A5D1A] text-white px-6 py-2 rounded-md font-medium hover:bg-opacity-90 text-sm" data-bn="WhatsApp করুন" data-ar="تواصل واتساب" data-en="WhatsApp Us">WhatsApp করুন</a>
     </nav>
   </header>
 
-  <!-- হিরো - Rahmah স্টাইল + ইউনিক মেসেজ -->
+  <!-- হিরো - আপনার এড কপি দিয়ে -->
   <section class="py-16 md:py-24 bg-[#FAFAFA]">
     <div class="container mx-auto px-6 text-center max-w-4xl">
-      <p class="arabic text-xl text-[#1A5D1A] mb-3">وَقُل رَّبِّ زِدْنِي عِلْمًا</p>
-      <h2 class="text-3xl md:text-5xl font-bold text-gray-900 leading-tight">দ্বীন ও দুনিয়ার ইলমের সমন্বয়ে<br>আলোকিত প্রজন্ম</h2>
-      <p class="mt-6 text-lg text-gray-600 leading-relaxed">Al Mustanir একটি অলাভজনক ইসলামিক শিক্ষা প্রতিষ্ঠান। এখানে কুরআন-সুন্নাহর বিশুদ্ধ জ্ঞানের পাশাপাশি আধুনিক একাডেমিক শিক্ষা দেওয়া হয়। আমাদের সকল কার্যক্রম ফি-সাবিলিল্লাহ পরিচালিত।</p>
-      <div class="mt-8 flex justify-center gap-4">
-        <a href="#programs" class="bg-[#1A5D1A] text-white px-8 py-3 rounded-md font-semibold hover:bg-opacity-90">প্রোগ্রাম দেখুন</a>
-        <a href="#feature" class="border border-[#1A5D1A] text-[#1A5D1A] px-8 py-3 rounded-md font-semibold hover:bg-[#1A5D1A] hover:text-white">আমরা কেন আলাদা</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- আমাদের সম্পর্কে - Rahmah টোন -->
-  <section id="about" class="py-16 bg-white">
-    <div class="container mx-auto px-6 max-w-4xl">
-      <h3 class="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-8 border-b-2 border-[#1A5D1A] inline-block pb-2">আমাদের মানহাজ</h3>
-      <div class="text-gray-700 leading-loose space-y-4 text-justify">
-        <p>Al Mustanir Education Centre কুরআন, সুন্নাহ ও সালাফে সালেহীনের আকিদা-মানহাজের উপর প্রতিষ্ঠিত। আমাদের লক্ষ্য এমন একটি প্রজন্ম গড়ে তোলা যারা একাধারে আলেম, হাফেজ এবং আধুনিক জ্ঞানে পারদর্শী হবে।</p>
-        <p class="font-semibold text-[#1A5D1A]">আমরা বিশ্বাস করি: ইলম ছাড়া আমল অন্ধ, আর আমল ছাড়া ইলম পঙ্গু। তাই আমরা দুটোর সমন্বয় করি।</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ইউনিক ফিচার: আমার আইডিয়া + Rahmah লুক -->
-  <section id="feature" class="py-16 bg-[#FAFAFA]">
-    <div class="container mx-auto px-6 max-w-5xl">
-      <h3 class="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-12">যে কারণে <span class="text-[#1A5D1A]">Mustanir</span> আলাদা</h3>
+      <h2 class="text-2xl md:text-4xl font-bold text-gray-900 leading-tight mb-6" data-bn="আপনি কি আপনার অথবা সন্তানের কুরআন শিক্ষা নিয়ে চিন্তিত?" data-ar="هل أنت قلق بشأن تعليم القرآن لك أو لطفلك؟" data-en="Worried about Quran education for you or your child?">আপনি কি আপনার অথবা সন্তানের কুরআন শিক্ষা নিয়ে চিন্তিত?</h2>
       
-      <div class="grid md:grid-cols-2 gap-8 items-center">
-        <div class="bg-white p-8 rounded-lg border border-gray-200">
-          <h4 class="text-xl font-bold text-[#1A5D1A] mb-3">১. ইলম ও আমল ট্র্যাকার</h4>
-          <p class="text-gray-600">প্রতিটি ছাত্রের জন্য ব্যক্তিগত ড্যাশবোর্ড। গার্ডিয়ান দেখতে পাবেন: আজ কী পড়লো, হোমওয়ার্ক জমা দিলো কিনা, মাসিক প্রোগ্রেস রিপোর্ট। ইলমের সাথে আমলের হিসাবও থাকবে।</p>
-        </div>
-        <div class="bg-white p-8 rounded-lg border border-gray-200">
-          <h4 class="text-xl font-bold text-[#1A5D1A] mb-3">২. দুই ধারার সমন্বয়</h4>
-          <p class="text-gray-600">একই ছাদের নিচে স্কুল-কলেজের সিলেবাস ও মাদ্রাসার সিলেবাস। সকালে জেনারেল ক্লাস, বিকালে আরবি-কুরআন। দুনিয়া ও আখিরাতের ব্যালেন্স।</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- প্রোগ্রাম - ট্যাব সিস্টেম = আমার আইডিয়া + Rahmah ক্লিন কার্ড -->
-  <section id="programs" class="py-16 bg-white">
-    <div class="container mx-auto px-6">
-      <h3 class="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-8">প্রোগ্রামসমূহ</h3>
-      
-      <!-- ট্যাব বাটন -->
-      <div class="flex justify-center gap-8 mb-10 border-b border-gray-200">
-        <button onclick="showTab('deeni')" id="btn-deeni" class="pb-2 font-semibold tab-active">দ্বীনি প্রোগ্রাম</button>
-        <button onclick="showTab('academic')" id="btn-academic" class="pb-2 font-semibold text-gray-500">একাডেমিক প্রোগ্রাম</button>
-      </div>
-
-      <!-- দ্বীনি ট্যাব -->
-      <div id="deeni" class="grid md:grid-cols-3 gap-6">
-        <div class="bg-[#FAFAFA] p-6 rounded-lg border border-gray-200">
-          <h4 class="text-lg font-bold text-[#1A5D1A] mb-2">হিফজুল কুরআন</h4>
-          <p class="text-gray-600 text-sm">তাজবীদ ও মাখরাজ সহীহ করে পূর্ণ কুরআন হিফজ। সাথে জরুরি মাসায়েল।</p>
-        </div>
-        <div class="bg-[#FAFAFA] p-6 rounded-lg border border-gray-200">
-          <h4 class="text-lg font-bold text-[#1A5D1A] mb-2">আলিমা কোর্স - বোনদের</h4>
-          <p class="text-gray-600 text-sm">মহিলা উস্তাজাদের তত্ত্বাবধানে ৪ বছর মেয়াদী কোর্স। সম্পূর্ণ পর্দার সাথে।</p>
-        </div>
-        <div class="bg-[#FAFAFA] p-6 rounded-lg border border-gray-200">
-          <h4 class="text-lg font-bold text-[#1A5D1A] mb-2">নাজেরা + তাফসীর</h4>
-          <p class="text-gray-600 text-sm">বয়স্কদের জন্য সহজ পদ্ধতিতে কুরআন শিক্ষা ও অর্থসহ তাফসীর।</p>
-        </div>
-      </div>
-
-      <!-- একাডেমিক ট্যাব -->
-      <div id="academic" class="hidden grid md:grid-cols-3 gap-6">
-        <div class="bg-[#FAFAFA] p-6 rounded-lg border border-gray-200">
-          <h4 class="text-lg font-bold text-[#1A5D1A] mb-2">ক্লাস ৬-১০ বিজ্ঞান</h4>
-          <p class="text-gray-600 text-sm">গণিত, পদার্থ, রসায়ন, জীববিজ্ঞান - NCTB সিলেবাস। অভিজ্ঞ শিক্ষক।</p>
-        </div>
-        <div class="bg-[#FAFAFA] p-6 rounded-lg border border-gray-200">
-          <h4 class="text-lg font-bold text-[#1A5D1A] mb-2">স্পোকেন ইংলিশ + এরাবিক</h4>
-          <p class="text-gray-600 text-sm">৩ মাসে ইংরেজি ও আরবিতে কথা বলার দক্ষতা অর্জন।</p>
-        </div>
-        <div class="bg-[#FAFAFA] p-6 rounded-lg border border-gray-200">
-          <h4 class="text-lg font-bold text-[#1A5D1A] mb-2">HSC প্রস্তুতি</h4>
-          <p class="text-gray-600 text-sm">বিজ্ঞান, ব্যবসায় ও মানবিক বিভাগের জন্য স্পেশাল কেয়ার ও মডেল টেস্ট।</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- নোটিশ + হাদিস - Rahmah স্টাইল -->
-  <section class="py-12 bg-[#FAFAFA]">
-    <div class="container mx-auto px-6 grid md:grid-cols-2 gap-6 max-w-4xl">
-      <div class="bg-white p-6 rounded-lg border-l-4 border-[#1A5D1A]">
-        <h4 class="font-bold text-[#1A5D1A] mb-2">নোটিশ বোর্ড</h4>
-        <p class="text-gray-700 text-sm">আগামী শুক্রবার সকল বিভাগের মাসিক পরীক্ষা। সময়: সকাল ৯টা। সকলকে উপস্থিত থাকার অনুরোধ।</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg border-l-4 border-[#1A5D1A]">
-        <h4 class="font-bold text-[#1A5D1A] mb-2">আজকের হাদিস</h4>
-        <p class="arabic text-right">طَلَبُ الْعِلْمِ فَرِيضَةٌ عَلَى كُلِّ مُسْلِمٍ</p>
-        <p class="text-gray-600 text-sm mt-1">"জ্ঞান অর্জন করা প্রত্যেক মুসলিমের উপর ফরজ।" - ইবনে মাজাহ</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ফুটার -->
-  <footer id="contact" class="bg-[#1A5D1A] text-white py-12">
-    <div class="container mx-auto px-6 text-center">
-      <img src="logo.png" alt="Al Mustanir" class="h-16 w-auto mx-auto mb-4 bg-white rounded-lg p-2">
-      <h3 class="text-xl font-bold">Al Mustanir Education Centre</h3>
-      <p class="arabic text-gray-300 mt-1">مركز المستنير للتعليم الإسلامي</p>
-      <p class="mt-4 text-sm text-gray-300">ঠিকানা: আপনার প্রতিষ্ঠানের ঠিকানা | ফোন: 01XXX-XXXXXX</p>
-      <p class="mt-6 text-xs text-gray-400">© ১৪৪৭ হিজরি | সকল কার্যক্রম ফি-সাবিলিল্লাহ পরিচালিত</p>
-    </div>
-  </footer>
-
-<script>
-// হিজরি তারিখ
-const today = new Date();
-const hijriDate = new Intl.DateTimeFormat('bn-u-ca-islamic', {day: 'numeric', month: 'long', year: 'numeric'}).format(today);
-document.getElementById('hijri-date').innerText = hijriDate + ' হিজরি';
-
-// ট্যাব সিস্টেম
-function showTab(tab) {
-  document.getElementById('deeni').classList.add('hidden');
-  document.getElementById('academic').classList.add('hidden');
-  document.getElementById('btn-deeni').classList.remove('tab-active');
-  document.getElementById('btn-academic').classList.remove('tab-active');
-  document.getElementById('btn-deeni').classList.add('text-gray-500');
-  document.getElementById('btn-academic').classList.add('text-gray-500');
-  
-  document.getElementById(tab).classList.remove('hidden');
-  document.getElementById('btn-'+tab).classList.add('tab-active');
-  document.getElementById('btn-'+tab).classList.remove('text-gray-500');
-}
-</script>
-
-</body>
-</html>
+      <p class="text-lg text-gray-700 leading-relaxed mb-4" data-bn="এরাবিক সাবজেক্টগুলোর হোমওয়ার্ক সলিউশন নিয়ে টেনশন করছেন? অনেক চেষ্টা করেও হচ্ছে না? যোগ্য শিক্ষক খুঁজে পাওয়াও কঠিন?" data-ar="هل تشعر بالقلق من حل واجبات المواد العربية؟ حاولت كثيراً ولم تنجح؟ من الصعب العثور على معلم مؤهل؟" data-en="Stressed about Arabic homework solutions? Tried hard but no results? Finding qualifi
