@@ -10,19 +10,18 @@
     body { font-family: 'Hind Siliguri', sans-serif; }
     .arabic { font-family: 'Amiri', serif; }
     .english { font-family: 'Poppins', sans-serif; }
-    .tab-active { border-bottom: 2px solid #1A5D1A; color: #1A5D1A; }
     [dir="rtl"] { text-align: right; }
   </style>
 </head>
 <body class="bg-white text-gray-800">
 
-  <!-- টপ বার: বিসমিল্লাহ + হিজরি + ভাষা -->
+  <!-- টপ বার: বিসমিল্লাহ + অটো হিজরি + ভাষা -->
   <div class="bg-[#1A5D1A] text-white py-1.5 text-sm">
     <div class="container mx-auto px-6 flex justify-between items-center">
       <div>
         <span class="arabic text-base">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</span>
         <span class="mx-4 hidden md:inline">|</span>
-        <span id="hijri-date" class="hidden md:inline">লোড হচ্ছে...</span>
+        <span id="hijri-date" class="hidden md:inline">Detecting location...</span>
       </div>
       <div class="flex gap-3">
         <button onclick="changeLang('bn')" id="lang-bn" class="font-semibold underline">বাংলা</button>
@@ -50,7 +49,7 @@
     </nav>
   </header>
 
-  <!-- হিরো - আপনার এড কপি দিয়ে -->
+  <!-- হিরো - আপনার এড কপি -->
   <section class="py-16 md:py-24 bg-[#FAFAFA]">
     <div class="container mx-auto px-6 text-center max-w-4xl">
       <h2 class="text-2xl md:text-4xl font-bold text-gray-900 leading-tight mb-6" data-bn="আপনি কি আপনার অথবা সন্তানের কুরআন শিক্ষা নিয়ে চিন্তিত?" data-ar="هل أنت قلق بشأن تعليم القرآن لك أو لطفلك؟" data-en="Worried about Quran education for you or your child?">আপনি কি আপনার অথবা সন্তানের কুরআন শিক্ষা নিয়ে চিন্তিত?</h2>
@@ -66,26 +65,29 @@
     </div>
   </section>
 
-  <!-- আমাদের বৈশিষ্ট্য - আপনার এড থেকে -->
-  <section id="services" class="py-16 bg-white">
+  <!-- উস্তাদ - আল-আজহার -->
+  <section id="teachers" class="py-16 bg-white">
+    <div class="container mx-auto px-6 text-center max-w-3xl">
+      <p class="text-lg text-gray-700 leading-loose" data-bn="আল-আজহার ইউনিভার্সিটি ও স্বনামধন্য প্রতিষ্ঠানে অধ্যয়নরত দক্ষ, অভিজ্ঞ, আমানতদার ও ধৈর্যশীল শিক্ষক-শিক্ষিকাদের নিরলস মেহনতে পরিচালিত হয় আমাদের প্রতিষ্ঠান।" data-ar="يديرها معلمون ومعلمات أكفاء وذوو خبرة وأمانة وصبر من جامعة الأزهر ومؤسسات مرموقة" data-en="Run by skilled, experienced, trustworthy & patient teachers from Al-Azhar University and renowned institutions">আল-আজহার ইউনিভার্সিটি ও স্বনামধন্য প্রতিষ্ঠানে অধ্যয়নরত দক্ষ, অভিজ্ঞ, আমানতদার ও ধৈর্যশীল শিক্ষক-শিক্ষিকাদের নিরলস মেহনতে পরিচালিত হয় আমাদের প্রতিষ্ঠান।</p>
+    </div>
+  </section>
+
+  <!-- সুবিধা -->
+  <section id="services" class="py-16 bg-[#FAFAFA]">
     <div class="container mx-auto px-6 max-w-5xl">
-      <h3 class="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-4" data-bn="আমাদের সুবিধা" data-ar="مميزاتنا" data-en="Our Advantages">আমাদের সুবিধা</h3>
-      <p class="text-center text-gray-600 mb-12" data-bn="আল-আজহার ইউনিভার্সিটি ও স্বনামধন্য প্রতিষ্ঠানে অধ্যয়নরত দক্ষ, অভিজ্ঞ, আমানতদার ও ধৈর্যশীল শিক্ষক-শিক্ষিকাদের নিরলস মেহনতে পরিচালিত" data-ar="يديرها معلمون ومعلمات أكفاء وذوو خبرة وأمانة وصبر من جامعة الأزهر ومؤسسات مرموقة" data-en="Run by skilled, experienced, trustworthy & patient teachers from Al-Azhar University and renowned institutions">আল-আজহার ইউনিভার্সিটি ও স্বনামধন্য প্রতিষ্ঠানে অধ্যয়নরত দক্ষ, অভিজ্ঞ, আমানতদার ও ধৈর্যশীল শিক্ষক-শিক্ষিকাদের নিরলস মেহনতে পরিচালিত</p>
+      <h3 class="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-12" data-bn="আমাদের সুবিধা" data-ar="مميزاتنا" data-en="Our Advantages">আমাদের সুবিধা</h3>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-[#FAFAFA] p-6 rounded-lg border border-gray-200">
+        <div class="bg-white p-6 rounded-lg border border-gray-200">
           <h4 class="text-lg font-bold text-[#1A5D1A] mb-2" data-bn="✅ ওয়ান টু ওয়ান লাইভ ক্লাস" data-ar="✅ دروس مباشرة فردية" data-en="✅ One-to-One Live Classes">✅ ওয়ান টু ওয়ান লাইভ ক্লাস</h4>
-          <p class="text-gray-600 text-sm" data-bn="সম্পূর্ণ ব্যক্তিগত মনোযোগ, আপনার দুর্বলতা অনুযায়ী পাঠ" data-ar="اهتمام شخصي كامل، دروس حسب نقاط ضعفك" data-en="Complete personal attention, lessons based on your weaknesses">সম্পূর্ণ ব্যক্তিগত মনোযোগ, আপনার দুর্বলতা অনুযায়ী পাঠ</p>
         </div>
-        <div class="bg-[#FAFAFA] p-6 rounded-lg border border-gray-200">
+        <div class="bg-white p-6 rounded-lg border border-gray-200">
           <h4 class="text-lg font-bold text-[#1A5D1A] mb-2" data-bn="✅ ছেলে-মেয়ে আলাদা ক্লাস" data-ar="✅ فصول منفصلة للبنين والبنات" data-en="✅ Separate Classes for Boys & Girls">✅ ছেলে-মেয়ে আলাদা ক্লাস</h4>
-          <p class="text-gray-600 text-sm" data-bn="শরীয়াহ সম্মত পর্দার পরিবেশে শিক্ষা" data-ar="تعليم في بيئة ملتزمة بالحجاب الشرعي" data-en="Education in Shariah-compliant environment">শরীয়াহ সম্মত পর্দার পরিবেশে শিক্ষা</p>
         </div>
-        <div class="bg-[#FAFAFA] p-6 rounded-lg border border-gray-200">
+        <div class="bg-white p-6 rounded-lg border border-gray-200">
           <h4 class="text-lg font-bold text-[#1A5D1A] mb-2" data-bn="✅ আপনার পছন্দমত সময়" data-ar="✅ اختر وقتك المناسب" data-en="✅ Choose Your Time">✅ আপনার পছন্দমত সময়</h4>
-          <p class="text-gray-600 text-sm" data-bn="চাকরি, পড়াশোনার সাথে মিলিয়ে ফ্লেক্সিবল শিডিউল" data-ar="جدول مرن يناسب عملك ودراستك" data-en="Flexible schedule matching your work/study">চাকরি, পড়াশোনার সাথে মিলিয়ে ফ্লেক্সিবল শিডিউল</p>
         </div>
-        <div class="bg-[#FAFAFA] p-6 rounded-lg border border-gray-200 md:col-span-3">
+        <div class="bg-white p-6 rounded-lg border border-gray-200 md:col-span-3">
           <h4 class="text-lg font-bold text-[#1A5D1A] mb-2" data-bn="✅ বেসিক থেকে এডভান্স লেভেল" data-ar="✅ من المستوى الأساسي إلى المتقدم" data-en="✅ From Basic to Advanced Level">✅ বেসিক থেকে এডভান্স লেভেল</h4>
           <p class="text-gray-600 text-sm" data-bn="কুরআন ও এরাবিক সাবজেক্টগুলো বেসিক থেকে এডভান্স লেভেল পর্যন্ত পাঠদানের যুগোপযোগী ব্যবস্থাপনা" data-ar="نظام حديث لتدريس القرآن والمواد العربية من المستوى الأساسي إلى المتقدم" data-en="Modern system to teach Quran & Arabic subjects from basic to advanced level">কুরআন ও এরাবিক সাবজেক্টগুলো বেসিক থেকে এডভান্স লেভেল পর্যন্ত পাঠদানের যুগোপযোগী ব্যবস্থাপনা</p>
         </div>
@@ -93,22 +95,11 @@
     </div>
   </section>
 
-  <!-- CTA সেকশন - আপনার এডের শেষ অংশ -->
-  <section class="py-16 bg-[#1A5D1A] text-white">
-    <div class="container mx-auto px-6 text-center max-w-3xl">
-      <h3 class="text-2xl md:text-3xl font-bold mb-4" data-bn="আপনার আজকের ছোট সিদ্ধান্তই ইনশাআল্লাহ বদলে দিতে পারে আপনার আগামী" data-ar="قرارك الصغير اليوم قد يغير مستقبلك إن شاء الله" data-en="Your small decision today can change your future, InshaAllah">আপনার আজকের ছোট সিদ্ধান্তই ইনশাআল্লাহ বদলে দিতে পারে আপনার আগামী</h3>
-      <p class="text-lg mb-8" data-bn="তাহলে আর দেরি কেন?" data-ar="فلماذا الانتظار؟" data-en="So why wait?">তাহলে আর দেরি কেন?</p>
-      <a href="https://wa.me/8801614917650?text=আসসালামু%20আলাইকুম%2C%20কুরআন%20শিক্ষা%20শুরু%20করতে%20চাই" target="_blank" class="bg-white text-[#1A5D1A] px-10 py-4 rounded-md font-bold text-lg hover:bg-gray-100" data-bn="এখনই WhatsApp এ যোগাযোগ করুন" data-ar="تواصل معنا على واتساب الآن" data-en="Contact Us on WhatsApp Now">এখনই WhatsApp এ যোগাযোগ করুন</a>
-      <p class="mt-6 text-sm">✨ <span data-bn="Al-Mustanir Education Center" data-ar="مركز المستنير التعليمي" data-en="Al-Mustanir Education Centre">Al-Mustanir Education Center</span> +880 1614-917650</p>
-      <p class="text-sm opacity-90" data-bn="কুরআন শিক্ষা ও ইসলামী জ্ঞান অর্জনের পদযাত্রায় আপনার বিশ্বস্ত সঙ্গী" data-ar="رفيقك الموثوق في رحلة تعلم القرآن والمعرفة الإسلامية" data-en="Your trusted partner in the journey of Quran learning & Islamic knowledge">কুরআন শিক্ষা ও ইসলামী জ্ঞান অর্জনের পদযাত্রায় আপনার বিশ্বস্ত সঙ্গী</p>
-    </div>
-  </section>
-
-  <!-- নামাজের সময় -->
+  <!-- অটো নামাজের সময় -->
   <section class="py-12 bg-white">
     <div class="container mx-auto px-6 max-w-2xl">
       <div class="bg-[#FAFAFA] p-6 rounded-lg border-l-4 border-[#1A5D1A]">
-        <h4 class="font-bold text-[#1A5D1A] mb-4 text-center" data-bn="আজকের নামাজের সময় - Cairo" data-ar="مواقيت الصلاة - القاهرة" data-en="Prayer Times - Cairo">আজকের নামাজের সময় - Cairo</h4>
+        <h4 class="font-bold text-[#1A5D1A] mb-4 text-center"><span data-bn="আজকের নামাজের সময়" data-ar="مواقيت الصلاة اليوم" data-en="Today's Prayer Times">আজকের নামাজের সময়</span> - <span id="city-name">Loading...</span></h4>
         <div class="grid grid-cols-5 gap-3 text-center text-sm">
           <div><p class="font-bold" data-bn="ফজর" data-ar="الفجر" data-en="Fajr">ফজর</p><p id="fajr">--:--</p></div>
           <div><p class="font-bold" data-bn="যোহর" data-ar="الظهر" data-en="Dhuhr">যোহর</p><p id="dhuhr">--:--</p></div>
@@ -117,6 +108,17 @@
           <div><p class="font-bold" data-bn="ইশা" data-ar="العشاء" data-en="Isha">ইশা</p><p id="isha">--:--</p></div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-[#1A5D1A] text-white">
+    <div class="container mx-auto px-6 text-center max-w-3xl">
+      <h3 class="text-2xl md:text-3xl font-bold mb-4" data-bn="আপনার আজকের ছোট সিদ্ধান্তই ইনশাআল্লাহ বদলে দিতে পারে আপনার আগামী" data-ar="قرارك الصغير اليوم قد يغير مستقبلك إن شاء الله" data-en="Your small decision today can change your future, InshaAllah">আপনার আজকের ছোট সিদ্ধান্তই ইনশাআল্লাহ বদলে দিতে পারে আপনার আগামী</h3>
+      <p class="text-lg mb-8" data-bn="তাহলে আর দেরি কেন?" data-ar="فلماذا الانتظار؟" data-en="So why wait?">তাহলে আর দেরি কেন?</p>
+      <a href="https://wa.me/8801614917650?text=আসসালামু%20আলাইকুম%2C%20কুরআন%20শিক্ষা%20শুরু%20করতে%20চাই" target="_blank" class="bg-white text-[#1A5D1A] px-10 py-4 rounded-md font-bold text-lg hover:bg-gray-100" data-bn="এখনই WhatsApp এ যোগাযোগ করুন" data-ar="تواصل معنا على واتساب الآن" data-en="Contact Us on WhatsApp Now">এখনই WhatsApp এ যোগাযোগ করুন</a>
+      <p class="mt-6 text-sm">✨ Al-Mustanir Education Center +880 1614-917650</p>
+      <p class="text-sm opacity-90" data-bn="কুরআন শিক্ষা ও ইসলামী জ্ঞান অর্জনের পদযাত্রায় আপনার বিশ্বস্ত সঙ্গী" data-ar="رفيقك الموثوق في رحلة تعلم القرآن والمعرفة الإسلامية" data-en="Your trusted partner in the journey of Quran learning & Islamic knowledge">কুরআন শিক্ষা ও ইসলামী জ্ঞান অর্জনের পদযাত্রায় আপনার বিশ্বস্ত সঙ্গী</p>
     </div>
   </section>
 
@@ -129,16 +131,25 @@
         <p class="text-sm text-gray-300">📞 <a href="tel:+8801614917650" class="hover:text-white">+880 1614-917650</a></p>
         <p class="text-sm text-gray-300">💬 <a href="https://wa.me/8801614917650" target="_blank" class="hover:text-white">WhatsApp: +880 1614-917650</a></p>
       </div>
-      <p class="mt-6 text-xs text-gray-500">© ১৪৪৭ AH | <span data-bn="ফি-সাবিলিল্লাহ পরিচালিত" data-ar="يُدار في سبيل الله" data-en="Run Fee-Sabilillah">ফি-সাবিলিল্লাহ পরিচালিত</span></p>
+      <p class="mt-6 text-xs text-gray-500">© 1447 AH | <span data-bn="ফি-সাবিলিল্লাহ পরিচালিত" data-ar="يُدار في سبيل الله" data-en="Run Fee-Sabilillah">ফি-সাবিলিল্লাহ পরিচালিত</span></p>
     </div>
   </footer>
 
 <script>
-// ১. সঠিক হিজরি তারিখ + নামাজ API
+// ১. অটো লোকেশন ডিটেক্ট + হিজরি তারিখ + নামাজের সময়
 async function loadIslamicData() {
   try {
-    const response = await fetch('https://api.aladhan.com/v1/timingsByCity?city=Cairo&country=Egypt&method=5');
-    const data = await response.json();
+    // স্টেপ ১: ইউজারের লোকেশন বের করা
+    const locRes = await fetch('https://ipapi.co/json/');
+    const locData = await locRes.json();
+    const city = locData.city || 'Cairo';
+    const country = locData.country_name || 'Egypt';
+    
+    document.getElementById('city-name').innerText = city;
+    
+    // স্টেপ ২: সেই লোকেশনের নামাজ + হিজরি তারিখ
+    const timeRes = await fetch(`https://api.aladhan.com/v1/timingsByCity?city=${city}&country=${country}&method=5`);
+    const data = await timeRes.json();
     const hijri = data.data.date.hijri;
     const timings = data.data.timings;
     
@@ -148,8 +159,12 @@ async function loadIslamicData() {
     document.getElementById('asr').innerText = timings.Asr.slice(0,5);
     document.getElementById('maghrib').innerText = timings.Maghrib.slice(0,5);
     document.getElementById('isha').innerText = timings.Isha.slice(0,5);
+    
   } catch (error) {
-    document.getElementById('hijri-date').innerText = 'Date loading...';
+    // যদি লোকেশন না পায়, Cairo ডিফল্ট
+    document.getElementById('hijri-date').innerText = '1 Muharram 1447 AH';
+    document.getElementById('city-name').innerText = 'Cairo';
+    console.log('Auto location failed, using default');
   }
 }
 loadIslamicData();
@@ -173,4 +188,194 @@ function changeLang(lang) {
 </script>
 
 </body>
-</html>
+  </html><!DOCTYPE html>
+<html lang="bn" id="html-tag">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Al Mustanir Education Centre | مركز المستنير | Online Quran & Arabic</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Hind Siliguri', sans-serif; }
+    .arabic { font-family: 'Amiri', serif; }
+    .english { font-family: 'Poppins', sans-serif; }
+    [dir="rtl"] { text-align: right; }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+
+  <!-- টপ বার: বিসমিল্লাহ + অটো হিজরি + ভাষা -->
+  <div class="bg-[#1A5D1A] text-white py-1.5 text-sm">
+    <div class="container mx-auto px-6 flex justify-between items-center">
+      <div>
+        <span class="arabic text-base">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</span>
+        <span class="mx-4 hidden md:inline">|</span>
+        <span id="hijri-date" class="hidden md:inline">Detecting location...</span>
+      </div>
+      <div class="flex gap-3">
+        <button onclick="changeLang('bn')" id="lang-bn" class="font-semibold underline">বাংলা</button>
+        <button onclick="changeLang('ar')" id="lang-ar" class="hover:underline">العربية</button>
+        <button onclick="changeLang('en')" id="lang-en" class="hover:underline">English</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- হেডার -->
+  <header class="bg-white border-b border-gray-100 sticky top-0 z-50">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <img src="logo.png" alt="Al Mustanir Logo" class="h-10 md:h-12 w-auto">
+        <div>
+          <h1 class="text-xl md:text-2xl font-semibold text-[#1A5D1A]" data-bn="Al Mustanir Education Centre" data-ar="مركز المستنير التعليمي" data-en="Al Mustanir Education Centre">Al Mustanir Education Centre</h1>
+          <p class="text-xs text-gray-500" data-bn="কুরআন ও আরবি শিক্ষার বিশ্বস্ত সঙ্গী" data-ar="رفيقك الموثوق في تعلم القرآن والعربية" data-en="Your Trusted Partner in Quran & Arabic">কুরআন ও আরবি শিক্ষার বিশ্বস্ত সঙ্গী</p>
+        </div>
+      <div class="hidden md:flex space-x-8 text-gray-700">
+        <a href="#services" class="hover:text-[#1A5D1A]" data-bn="সেবাসমূহ" data-ar="خدماتنا" data-en="Services">সেবাসমূহ</a>
+        <a href="#teachers" class="hover:text-[#1A5D1A]" data-bn="উস্তাদবৃন্দ" data-ar="المعلمون" data-en="Teachers">উস্তাদবৃন্দ</a>
+        <a href="#contact" class="hover:text-[#1A5D1A]" data-bn="যোগাযোগ" data-ar="اتصل بنا" data-en="Contact">যোগাযোগ</a>
+      </div>
+      <a href="https://wa.me/8801614917650?text=আসসালামু%20আলাইকুম%2C%20কুরআন%20শিক্ষার%20ব্যাপারে%20জানতে%20চাই" target="_blank" class="bg-[#1A5D1A] text-white px-6 py-2 rounded-md font-medium hover:bg-opacity-90 text-sm" data-bn="WhatsApp করুন" data-ar="تواصل واتساب" data-en="WhatsApp Us">WhatsApp করুন</a>
+    </nav>
+  </header>
+
+  <!-- হিরো - আপনার এড কপি -->
+  <section class="py-16 md:py-24 bg-[#FAFAFA]">
+    <div class="container mx-auto px-6 text-center max-w-4xl">
+      <h2 class="text-2xl md:text-4xl font-bold text-gray-900 leading-tight mb-6" data-bn="আপনি কি আপনার অথবা সন্তানের কুরআন শিক্ষা নিয়ে চিন্তিত?" data-ar="هل أنت قلق بشأن تعليم القرآن لك أو لطفلك؟" data-en="Worried about Quran education for you or your child?">আপনি কি আপনার অথবা সন্তানের কুরআন শিক্ষা নিয়ে চিন্তিত?</h2>
+      
+      <p class="text-lg text-gray-700 leading-relaxed mb-4" data-bn="এরাবিক সাবজেক্টগুলোর হোমওয়ার্ক সলিউশন নিয়ে টেনশন করছেন? অনেক চেষ্টা করেও হচ্ছে না? যোগ্য শিক্ষক খুঁজে পাওয়াও কঠিন?" data-ar="هل تشعر بالقلق من حل واجبات المواد العربية؟ حاولت كثيراً ولم تنجح؟ من الصعب العثور على معلم مؤهل؟" data-en="Stressed about Arabic homework solutions? Tried hard but no results? Finding qualified teachers is difficult?">এরাবিক সাবজেক্টগুলোর হোমওয়ার্ক সলিউশন নিয়ে টেনশন করছেন? অনেক চেষ্টা করেও হচ্ছে না? যোগ্য শিক্ষক খুঁজে পাওয়াও কঠিন?</p>
+      
+      <p class="text-xl font-semibold text-[#1A5D1A] mb-6" data-bn="চিন্তার কোনো কারণ নেই। Al-Mustanir Education Center নিয়ে এসেছে ঘরে বসেই অভিনব পদ্ধতিতে কুরআন এবং আরবি ভাষা শেখার সুব্যবস্থা।" data-ar="لا داعي للقلق. مركز المستنير التعليمي يقدم نظاماً مبتكراً لتعلم القرآن واللغة العربية من منزلك." data-en="No need to worry. Al-Mustanir Education Center brings an innovative system to learn Quran and Arabic from home.">চিন্তার কোনো কারণ নেই। Al-Mustanir Education Center নিয়ে এসেছে ঘরে বসেই অভিনব পদ্ধতিতে কুরআন এবং আরবি ভাষা শেখার সুব্যবস্থা।</p>
+
+      <div class="mt-8 flex justify-center gap-4">
+        <a href="https://wa.me/8801614917650?text=আসসালামু%20আলাইকুম%2C%20ভর্তি%20হতে%20চাই" target="_blank" class="bg-[#1A5D1A] text-white px-8 py-3 rounded-md font-semibold hover:bg-opacity-90" data-bn="এখনই ভর্তি হোন" data-ar="سجل الآن" data-en="Enroll Now">এখনই ভর্তি হোন</a>
+        <a href="#services" class="border border-[#1A5D1A] text-[#1A5D1A] px-8 py-3 rounded-md font-semibold hover:bg-[#1A5D1A] hover:text-white" data-bn="সুবিধা দেখুন" data-ar="شاهد المميزات" data-en="See Benefits">সুবিধা দেখুন</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- উস্তাদ - আল-আজহার -->
+  <section id="teachers" class="py-16 bg-white">
+    <div class="container mx-auto px-6 text-center max-w-3xl">
+      <p class="text-lg text-gray-700 leading-loose" data-bn="আল-আজহার ইউনিভার্সিটি ও স্বনামধন্য প্রতিষ্ঠানে অধ্যয়নরত দক্ষ, অভিজ্ঞ, আমানতদার ও ধৈর্যশীল শিক্ষক-শিক্ষিকাদের নিরলস মেহনতে পরিচালিত হয় আমাদের প্রতিষ্ঠান।" data-ar="يديرها معلمون ومعلمات أكفاء وذوو خبرة وأمانة وصبر من جامعة الأزهر ومؤسسات مرموقة" data-en="Run by skilled, experienced, trustworthy & patient teachers from Al-Azhar University and renowned institutions">আল-আজহার ইউনিভার্সিটি ও স্বনামধন্য প্রতিষ্ঠানে অধ্যয়নরত দক্ষ, অভিজ্ঞ, আমানতদার ও ধৈর্যশীল শিক্ষক-শিক্ষিকাদের নিরলস মেহনতে পরিচালিত হয় আমাদের প্রতিষ্ঠান।</p>
+    </div>
+  </section>
+
+  <!-- সুবিধা -->
+  <section id="services" class="py-16 bg-[#FAFAFA]">
+    <div class="container mx-auto px-6 max-w-5xl">
+      <h3 class="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-12" data-bn="আমাদের সুবিধা" data-ar="مميزاتنا" data-en="Our Advantages">আমাদের সুবিধা</h3>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-lg border border-gray-200">
+          <h4 class="text-lg font-bold text-[#1A5D1A] mb-2" data-bn="✅ ওয়ান টু ওয়ান লাইভ ক্লাস" data-ar="✅ دروس مباشرة فردية" data-en="✅ One-to-One Live Classes">✅ ওয়ান টু ওয়ান লাইভ ক্লাস</h4>
+        </div>
+        <div class="bg-white p-6 rounded-lg border border-gray-200">
+          <h4 class="text-lg font-bold text-[#1A5D1A] mb-2" data-bn="✅ ছেলে-মেয়ে আলাদা ক্লাস" data-ar="✅ فصول منفصلة للبنين والبنات" data-en="✅ Separate Classes for Boys & Girls">✅ ছেলে-মেয়ে আলাদা ক্লাস</h4>
+        </div>
+        <div class="bg-white p-6 rounded-lg border border-gray-200">
+          <h4 class="text-lg font-bold text-[#1A5D1A] mb-2" data-bn="✅ আপনার পছন্দমত সময়" data-ar="✅ اختر وقتك المناسب" data-en="✅ Choose Your Time">✅ আপনার পছন্দমত সময়</h4>
+        </div>
+        <div class="bg-white p-6 rounded-lg border border-gray-200 md:col-span-3">
+          <h4 class="text-lg font-bold text-[#1A5D1A] mb-2" data-bn="✅ বেসিক থেকে এডভান্স লেভেল" data-ar="✅ من المستوى الأساسي إلى المتقدم" data-en="✅ From Basic to Advanced Level">✅ বেসিক থেকে এডভান্স লেভেল</h4>
+          <p class="text-gray-600 text-sm" data-bn="কুরআন ও এরাবিক সাবজেক্টগুলো বেসিক থেকে এডভান্স লেভেল পর্যন্ত পাঠদানের যুগোপযোগী ব্যবস্থাপনা" data-ar="نظام حديث لتدريس القرآن والمواد العربية من المستوى الأساسي إلى المتقدم" data-en="Modern system to teach Quran & Arabic subjects from basic to advanced level">কুরআন ও এরাবিক সাবজেক্টগুলো বেসিক থেকে এডভান্স লেভেল পর্যন্ত পাঠদানের যুগোপযোগী ব্যবস্থাপনা</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- অটো নামাজের সময় -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-6 max-w-2xl">
+      <div class="bg-[#FAFAFA] p-6 rounded-lg border-l-4 border-[#1A5D1A]">
+        <h4 class="font-bold text-[#1A5D1A] mb-4 text-center"><span data-bn="আজকের নামাজের সময়" data-ar="مواقيت الصلاة اليوم" data-en="Today's Prayer Times">আজকের নামাজের সময়</span> - <span id="city-name">Loading...</span></h4>
+        <div class="grid grid-cols-5 gap-3 text-center text-sm">
+          <div><p class="font-bold" data-bn="ফজর" data-ar="الفجر" data-en="Fajr">ফজর</p><p id="fajr">--:--</p></div>
+          <div><p class="font-bold" data-bn="যোহর" data-ar="الظهر" data-en="Dhuhr">যোহর</p><p id="dhuhr">--:--</p></div>
+          <div><p class="font-bold" data-bn="আসর" data-ar="العصر" data-en="Asr">আসর</p><p id="asr">--:--</p></div>
+          <div><p class="font-bold" data-bn="মাগরিব" data-ar="المغرب" data-en="Maghrib">মাগরিব</p><p id="maghrib">--:--</p></div>
+          <div><p class="font-bold" data-bn="ইশা" data-ar="العشاء" data-en="Isha">ইশা</p><p id="isha">--:--</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-[#1A5D1A] text-white">
+    <div class="container mx-auto px-6 text-center max-w-3xl">
+      <h3 class="text-2xl md:text-3xl font-bold mb-4" data-bn="আপনার আজকের ছোট সিদ্ধান্তই ইনশাআল্লাহ বদলে দিতে পারে আপনার আগামী" data-ar="قرارك الصغير اليوم قد يغير مستقبلك إن شاء الله" data-en="Your small decision today can change your future, InshaAllah">আপনার আজকের ছোট সিদ্ধান্তই ইনশাআল্লাহ বদলে দিতে পারে আপনার আগামী</h3>
+      <p class="text-lg mb-8" data-bn="তাহলে আর দেরি কেন?" data-ar="فلماذا الانتظار؟" data-en="So why wait?">তাহলে আর দেরি কেন?</p>
+      <a href="https://wa.me/8801614917650?text=আসসালামু%20আলাইকুম%2C%20কুরআন%20শিক্ষা%20শুরু%20করতে%20চাই" target="_blank" class="bg-white text-[#1A5D1A] px-10 py-4 rounded-md font-bold text-lg hover:bg-gray-100" data-bn="এখনই WhatsApp এ যোগাযোগ করুন" data-ar="تواصل معنا على واتساب الآن" data-en="Contact Us on WhatsApp Now">এখনই WhatsApp এ যোগাযোগ করুন</a>
+      <p class="mt-6 text-sm">✨ Al-Mustanir Education Center +880 1614-917650</p>
+      <p class="text-sm opacity-90" data-bn="কুরআন শিক্ষা ও ইসলামী জ্ঞান অর্জনের পদযাত্রায় আপনার বিশ্বস্ত সঙ্গী" data-ar="رفيقك الموثوق في رحلة تعلم القرآن والمعرفة الإسلامية" data-en="Your trusted partner in the journey of Quran learning & Islamic knowledge">কুরআন শিক্ষা ও ইসলামী জ্ঞান অর্জনের পদযাত্রায় আপনার বিশ্বস্ত সঙ্গী</p>
+    </div>
+  </section>
+
+  <!-- ফুটার -->
+  <footer id="contact" class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto px-6 text-center">
+      <img src="logo.png" alt="Al Mustanir" class="h-16 w-auto mx-auto mb-4 bg-white rounded-lg p-2">
+      <h3 class="text-xl font-bold">Al Mustanir Education Centre</h3>
+      <div class="mt-4 space-y-1">
+        <p class="text-sm text-gray-300">📞 <a href="tel:+8801614917650" class="hover:text-white">+880 1614-917650</a></p>
+        <p class="text-sm text-gray-300">💬 <a href="https://wa.me/8801614917650" target="_blank" class="hover:text-white">WhatsApp: +880 1614-917650</a></p>
+      </div>
+      <p class="mt-6 text-xs text-gray-500">© 1447 AH | <span data-bn="ফি-সাবিলিল্লাহ পরিচালিত" data-ar="يُدار في سبيل الله" data-en="Run Fee-Sabilillah">ফি-সাবিলিল্লাহ পরিচালিত</span></p>
+    </div>
+  </footer>
+
+<script>
+// ১. অটো লোকেশন ডিটেক্ট + হিজরি তারিখ + নামাজের সময়
+async function loadIslamicData() {
+  try {
+    // স্টেপ ১: ইউজারের লোকেশন বের করা
+    const locRes = await fetch('https://ipapi.co/json/');
+    const locData = await locRes.json();
+    const city = locData.city || 'Cairo';
+    const country = locData.country_name || 'Egypt';
+    
+    document.getElementById('city-name').innerText = city;
+    
+    // স্টেপ ২: সেই লোকেশনের নামাজ + হিজরি তারিখ
+    const timeRes = await fetch(`https://api.aladhan.com/v1/timingsByCity?city=${city}&country=${country}&method=5`);
+    const data = await timeRes.json();
+    const hijri = data.data.date.hijri;
+    const timings = data.data.timings;
+    
+    document.getElementById('hijri-date').innerText = `${hijri.day} ${hijri.month.en} ${hijri.year} AH`;
+    document.getElementById('fajr').innerText = timings.Fajr.slice(0,5);
+    document.getElementById('dhuhr').innerText = timings.Dhuhr.slice(0,5);
+    document.getElementById('asr').innerText = timings.Asr.slice(0,5);
+    document.getElementById('maghrib').innerText = timings.Maghrib.slice(0,5);
+    document.getElementById('isha').innerText = timings.Isha.slice(0,5);
+    
+  } catch (error) {
+    // যদি লোকেশন না পায়, Cairo ডিফল্ট
+    document.getElementById('hijri-date').innerText = '1 Muharram 1447 AH';
+    document.getElementById('city-name').innerText = 'Cairo';
+    console.log('Auto location failed, using default');
+  }
+}
+loadIslamicData();
+
+// ২. ৩ ভাষা সিস্টেম
+function changeLang(lang) {
+  document.getElementById('html-tag').lang = lang;
+  document.getElementById('html-tag').dir = lang === 'ar' ? 'rtl' : 'ltr';
+  
+  document.querySelectorAll('[data-bn]').forEach(el => {
+    el.innerText = el.getAttribute(`data-${lang}`);
+    if (lang === 'ar') el.classList.add('arabic');
+    else el.classList.remove('arabic');
+    if (lang === 'en') el.classList.add('english');
+    else el.classList.remove('english');
+  });
+  
+  document.querySelectorAll('[id^="lang-"]').forEach(btn => btn.classList.remove('underline', 'font-semibold'));
+  document.getElementById(`lang-${lang}`).classList.add('underline', 'font-semibold');
+}
+</script>
+
+</body>
+  </html>
